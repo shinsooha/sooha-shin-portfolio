@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="projects-page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Sooha Shin</title>
+  <meta name="description" content="Explore the works of Sooha Shin — computational design, urban computing, robotic fabrication, and more.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projects.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav" class="projects-nav">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Red Landing Hero -->
+  <section id="projects-hero">
+    <div class="projects-hero-content">
+      <h1 class="projects-hero-title">PROJECTS</h1>
+      <p class="projects-hero-subtitle">EXPLORE MY WORKS</p>
+      <button class="projects-hero-arrow" aria-label="Scroll down to projects">
+        <svg width="64" height="64" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter">
+          <line x1="14" y1="14" x2="42" y2="42"/>
+          <polyline points="22 42 42 42 42 22"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- Project Sections -->
+
+  <!-- 1. Weather Where It Matters -->
+  <section class="project-detail" id="weather">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">WEATHER WHERE IT MATTERS, 2025</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p><strong>Industry Problem:</strong> The absence of site-specific weather data in building energy modelling can lead to prediction errors of up to &plusmn;40%, revealing a key limitation in current simulation workflows.</p>
+          <p>Standard simulations rely on generalised weather files that overlook urban heat island effects and local variability. This project develops a physics-informed prediction framework combining the SUEWS urban climate model with regression machine learning to estimate hourly temperature and humidity at unmeasured locations. The system learns from surrounding weather stations and urban surface characteristics to generate validated, site-specific climate data, delivered through an interactive web tool for architecture and engineering workflows.</p>
+          <div class="wwim-awards">
+            <h3 class="wwim-awards-heading">Awards</h3>
+            <ul class="wwim-recognition" aria-label="Awards, recognition, and industry collaboration">
+              <li>
+                <span class="wwim-award-title">Computational Design Award 2025</span>
+                <span class="wwim-award-sub">UNSW Built Environment Graduation Exhibition</span>
+              </li>
+              <li>
+                <span class="wwim-award-title">Graduation Project Featured on Dezeen</span>
+                <span class="wwim-award-sub">International architecture &amp; design publication</span>
+              </li>
+              <li>
+                <span class="wwim-award-title">Project was created with industry collaboration</span>
+                <span class="wwim-award-sub">Arup: Haico Schepers</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="project-collage wwim-collage">
+
+        <!-- Row 1: App screenshot | hero video | dashboard screenshot (no device frames) -->
+        <div class="collage-row collage-row-hero">
+          <div class="collage-hero-shot">
+            <img src="assets/projects/WWIM/wwim-app-main.png" alt="WWIM — site selection and weather station map interface" loading="lazy">
+          </div>
+          <div class="collage-hero-video">
+            <video src="assets/projects/WWIM/wwim-hero-demo.mp4" autoplay loop muted playsinline></video>
+          </div>
+          <div class="collage-hero-shot">
+            <img src="assets/projects/WWIM/wwim-dashboard.png" alt="WWIM — prediction analysis dashboard" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Row 2: Pipeline diagram (centered) -->
+        <div class="collage-row collage-row-pipeline">
+          <img src="assets/projects/WWIM/wwim-pipeline.png" alt="WWIM — data pipeline from CSV to prediction output" loading="lazy">
+        </div>
+
+        <!-- Row 3: Workflow text + diagram presentation (3 slides) -->
+        <div class="collage-row collage-row-split">
+          <div class="collage-text-block">
+            <p><strong>Workflow:</strong> Meteorological and GIS data from multiple weather stations were processed and used to run the Surface Urban Energy and Water Balance Scheme (SUEWS) model, generating physics-informed urban climate outputs. These outputs were combined with historical weather data to build a machine learning dataset. Several regression models were tested using Leave-One-Station-Out validation to evaluate prediction accuracy for unseen locations. The workflow was then deployed as an interactive web interface allowing users to select sites, view prediction results, and download climate data.</p>
+          </div>
+          <div class="collage-diagram-right">
+            <div class="diagram-presentation" data-diagram-carousel role="region" aria-roledescription="carousel" aria-label="Workflow diagrams" tabindex="0">
+              <div class="diagram-presentation__viewport" aria-live="polite">
+                <figure class="diagram-presentation__slide is-active">
+                  <img src="assets/projects/WWIM/wwim-decision-tree.png" alt="Decision tree baseline — how tree-based ML models split features and samples">
+                </figure>
+                <figure class="diagram-presentation__slide">
+                  <img src="assets/projects/WWIM/wwim-phases.png" alt="Phase 1 SUEWS, Phase 2 machine learning, Phase 3 final outcome workflow" loading="lazy">
+                </figure>
+                <figure class="diagram-presentation__slide">
+                  <img src="assets/projects/WWIM/wwim-ml-predict.png" alt="How the ML models predict — from site selection to outputs" loading="lazy">
+                </figure>
+              </div>
+              <div class="diagram-presentation__nav">
+                <button type="button" class="diagram-presentation__btn" data-dir="prev" aria-label="Previous diagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button type="button" class="diagram-presentation__btn" data-dir="next" aria-label="Next diagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Validation + Random Site side by side -->
+        <div class="collage-row collage-row-dual">
+          <img src="assets/projects/WWIM/wwim-validation.png" alt="WWIM — validation of tool with case studies" loading="lazy">
+          <img src="assets/projects/WWIM/wwim-random-site.png" alt="WWIM — random site 1 prediction results" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Urban Lens -->
+  <section class="project-detail" id="urbanlens">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">URBAN LENS, 2025</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p>UrbanLens is an AI-assisted planning analysis tool that evaluates uploaded building models against suburb specific LGA zoning and parcel datasets to identify compliance issues and assess site suitability.</p>
+          <p><strong>Workflow:</strong> A Flask web interface processes STL uploads, extracts geometry using Three.js, and combines this data with local zoning datasets. Structured prompts are then sent through an AI API to generate planning insights displayed within the interface.
+          </p>
+        </div>
+      </div>
+      <div class="project-collage urbanlens-collage">
+
+        <!-- Video + LLM diagram: one column, same width, tight vertical rhythm -->
+        <div class="urbanlens-media-stack">
+          <div class="collage-row collage-row-video collage-row-video-flat">
+            <video src="assets/projects/URBANLENS/0321.mp4" autoplay loop muted playsinline loading="lazy"></video>
+          </div>
+          <div class="collage-row collage-row-single urbanlens-llm-row">
+            <img src="assets/projects/URBANLENS/urbanlens-llm.png" alt="Urban Lens — how the LLM processes data" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Row 3: Descriptive text -->
+        <div class="collage-row collage-row-text-wide">
+          <p>The LLM does not read raw design files independently. Python backend workflows first process uploaded STL models, reference images, user parameters, and LGA zoning datasets into structured architectural context. That processed data is then embedded into a carefully engineered prompt and sent through the OpenAI API, allowing the model to return planning feedback in four categories: contextual compatibility, environmental/material analysis, zoning compliance, and alternative location suggestions.</p>
+        </div>
+
+        <!-- Row 4: App screenshot + feature descriptions -->
+        <div class="collage-row collage-row-features">
+          <img src="assets/projects/URBANLENS/urbanlens-features.png" alt="Urban Lens — interactive 3D model validation and AI-driven recommendations" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Robotic Computing -->
+  <section class="project-detail" id="robotic">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">ROBOTIC COMPUTING, 2024</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p>Robotic Computing explored custom G-code generation for FDM 3D printing through Python and Grasshopper. Working incrementally from failed prints to refined parametric geometries, the project developed two prototype families — an organic multi-brep form and a lofted elliptical vessel — each tested across multiple variables including feed rate, extrusion rate, layer height, spike amplitude, and curvature. The course culminated in a group large-scale façade panel fabricated on a KR70 industrial robot using 100% recycled plastic.
+          </p>
+        </div>
+      </div>
+      <div class="robotic-objects" role="group" aria-label="Robotic Computing objects">
+        <button type="button" class="robotic-object-btn" data-explanation="assets/projects/FACADES/object1%20explanation.png" aria-label="Object 1 — view explanation">
+          <img src="assets/projects/FACADES/object1.png" alt="Object 1" loading="lazy">
+        </button>
+        <button type="button" class="robotic-object-btn" data-explanation="assets/projects/FACADES/object2%20explanation.png" aria-label="Object 2 — view explanation">
+          <img src="assets/projects/FACADES/object2.png" alt="Object 2" loading="lazy">
+        </button>
+        <button type="button" class="robotic-object-btn" data-explanation="assets/projects/FACADES/object3%20explanation.png" aria-label="Object 3 — view explanation">
+          <img src="assets/projects/FACADES/object3.png" alt="Object 3" loading="lazy">
+        </button>
+      </div>
+      <div class="robotic-media-row">
+        <div class="robotic-left-stack">
+          <img src="assets/projects/FACADES/2.png" alt="Robotic Computing — façade prototype" loading="lazy">
+          <video src="assets/projects/FACADES/IMG_6675.mp4" autoplay loop muted playsinline loading="lazy"></video>
+        </div>
+        <div class="robotic-right-col">
+          <p class="robotic-media-caption">For Assignment 2, our group investigated light filtration as a façade design domain. By deliberately scripting controlled overhangs into the toolpath, the printed panel produced shifting shadow geometries when intersected with light — making light itself part of the architectural output. Fabricated on a KR70 industrial robot using 100% recycled plastic.</p>
+          <video class="robotic-vid-right" src="assets/projects/FACADES/IMG_7573.mp4" autoplay loop muted playsinline loading="lazy"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Robotic / Karamba explanation bubble (global overlay) -->
+  <div id="robotic-bubble" class="robotic-bubble" role="dialog" aria-hidden="true" aria-label="Explanation">
+    <div class="robotic-bubble-inner">
+      <button type="button" class="robotic-bubble-close" aria-label="Close">&times;</button>
+      <img class="robotic-bubble-img" src="" alt="Explanation">
+      <div class="robotic-bubble-rich" hidden></div>
+    </div>
+  </div>
+
+  <!-- 4. Pic To Project -->
+  <section class="project-detail" id="pictoproject">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">PIC TO PROJECT, 2024</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p>A Flask-based web tool that uses Roboflow's instance segmentation to analyse uploaded or live-captured photos of buildings, returning estimated percentage coverage of five structural materials [concrete, brick, wood, glass, and vegetation]. The model was trained iteratively across multiple versions, refining image quality, annotation consistency, and dataset size to achieve a final mAP of 98.2% and precision of 97.4%. The system outputs a downloadable annotated image and material data report, designed for early on design decisions; cost estimation, sustainability reporting, and material inventory management within the AEC industry, aligning with UN SDG Goals 9 and 11.
+          </p>
+        </div>
+      </div>
+      <div class="pictoproject-image-1-1">
+        <img src="assets/projects/PICTOPROJECT/1.1.png" alt="Pic To Project — material detection interface" loading="lazy">
+      </div>
+      <div class="pictoproject-explanation-row">
+        <p class="pictoproject-explanation-text">Iterative testing with YOLOv11 instance segmentation model revealed that annotation quality outweighed dataset size, the final model reached 98.2% mAP. Each trained model generates a unique ID plugged directly into the Flask backend, which calls the Roboflow API to run inference and return material detections and space coverage percentages.</p>
+        <img class="pictoproject-screenshot" src="assets/projects/PICTOPROJECT/Screenshot 2026-03-21 at 12.27.24 am.png" alt="Pic To Project — model training and Roboflow integration" loading="lazy">
+      </div>
+      <div class="pictoproject-image-1-2">
+        <img src="assets/projects/PICTOPROJECT/1.2.png" alt="Pic To Project — material detection interface" loading="lazy">
+        <video src="assets/projects/PICTOPROJECT/0321%20(1.1).mp4" autoplay loop muted playsinline loading="lazy"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Urban Envelopes -->
+  <section class="project-detail" id="urban-envelopes">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">URBAN ENVELOPES, 2024</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p>Select any Sydney block on the web interface and real OpenStreetMap road and land data is pulled live into Grasshopper, generating parametric building envelopes, population density analysis, transport routes, and green space distribution on actual Sydney geography. Parameters updated on the website feed back into Grasshopper and update the Three.js viewer in real time. </p>
+        </div>
+      </div>
+      <div class="urban-envelopes-image">
+      </div>
+      <div class="urban-envelopes-population-row">
+        <img class="urban-envelopes-population-img" src="assets/projects/URBANENVELOPES/population.png" alt="Urban Envelopes — population density analysis" loading="lazy">
+        <p class="urban-envelopes-population-text"><strong>Population Density Analysis:</strong> Highway boundary geometry from OpenStreetMap is populated with points in Grasshopper, then a closest point component calculates proximity to the most user-heavy building centres to simulate where population movement concentrates. The seed point controlled on the website simultaneously drives building inclination and population density; so taller or denser building clusters attract higher population, gradually dispersing toward smaller blocks. This analysis directly informed where rooftop greenery and amenity buildings were placed, prioritising less populated zones for green space.</p>
+      </div>
+      <div class="urban-envelopes-youtube-video">
+        <video src="assets/projects/URBANENVELOPES/youtube.mp4" autoplay loop muted playsinline loading="lazy"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Karamba with Grid Shells -->
+  <section class="project-detail" id="karamba">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">KARAMBA WITH GRID SHELLS, 2024</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p><strong>Workflow:</strong> A catenary surface was generated using Kangaroo physics simulation to form the initial shell geometry. The structure was then converted into a geodesic grid suitable for fabrication and analysed using Karamba3D to test load behaviour and optimise member dimensions. Finally, the design was fabricated through laser-cut components and physically assembled.</p>
+        </div>
+      </div>
+      <div class="karamba-grid">
+        <div class="karamba-cell karamba-top-left">
+          <h3 class="karamba-section-title"><strong>A</strong> FORM FINDING ANALYSIS [KANGAROO PHYSICS]</h3>
+          <button type="button" class="karamba-grid-btn" data-explanation="" aria-label="Form finding — view details">
+            <video src="assets/projects/GRIDSHELL/Digital Form Finding.mp4" autoplay loop muted playsinline loading="lazy"></video>
+          </button>
+        </div>
+        <div class="karamba-cell karamba-top-right">
+          <h3 class="karamba-section-title"><strong>B</strong> WIREFRAME</h3>
+          <button type="button" class="karamba-grid-btn" data-karamba-explanation="b" aria-label="Wireframe — view details">
+            <img src="assets/projects/GRIDSHELL/2.1.png" alt="Karamba — structural analysis" loading="lazy">
+          </button>
+        </div>
+        <div class="karamba-cell karamba-bottom-left">
+          <h3 class="karamba-section-title"><strong>C</strong> KARAMBA [OPTIMISATION WITH LOADS]</h3>
+          <button type="button" class="karamba-grid-btn" data-karamba-explanation="c" aria-label="Karamba optimisation — view details">
+            <img src="assets/projects/GRIDSHELL/2.2.png" alt="Karamba — grid shell" loading="lazy">
+          </button>
+        </div>
+        <div class="karamba-cell karamba-bottom-right">
+          <h3 class="karamba-section-title"><strong>D</strong> PHYSICAL MODEL</h3>
+          <button type="button" class="karamba-grid-btn" data-karamba-explanation="d" aria-label="Physical model — view details">
+            <img src="assets/projects/GRIDSHELL/2.3.png" alt="Karamba — fabrication" loading="lazy">
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Karamba bubble copy sources (not shown on page) -->
+  <div class="karamba-bubble-sources" hidden aria-hidden="true">
+    <div id="karamba-explanation-b">
+      <p>This section presents a sequence of images showcasing the wire frame model. The line beams for this model is different to the line beams shown in the form finding model as these line are geodesic curves not polylines, and can be rolled out into straight beams, which is a critical feature needed for fabrication. So this wireframe model is essentially what the final structural model should look like.</p>
+      <img src="assets/projects/GRIDSHELL/2.4.png" alt="Wireframe model — geodesic grid" loading="lazy">
+    </div>
+    <div id="karamba-explanation-c">
+      <p>For the loads I tested various conditions</p>
+      <ul>
+        <li><strong>Gravity:</strong> component [The structures own weight]</li>
+        <li><strong>Snow:</strong> 1–1.5 kN/m²</li>
+        <li><strong>Wind:</strong> 0.84 kN/m²</li>
+      </ul>
+      <p><strong>Combinations of load conditions:</strong></p>
+      <ul>
+        <li>Gravity; Gravity + Snow</li>
+        <li>Gravity + Wind</li>
+        <li>Gravity + Snow + Wind</li>
+      </ul>
+      <p>After applying each load condition: Whichever one outputs the largest cross-sectional value with 80% utilization satisfaction will be used for the final fabrication model.</p>
+      <video src="assets/projects/GRIDSHELL/IMG_8325.mp4" controls playsinline preload="metadata"></video>
+    </div>
+    <div id="karamba-explanation-d">
+      <p>The structure could handle up to the bread package which is 1650g, but after the last food packet was place on top it started to make cracking noises in some the intersection points and the structure itself started to flatten down. Almost looking like the laid out version of the grid shell.</p>
+      <video src="assets/projects/GRIDSHELL/IMG_8259.mp4" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <!-- Floating project jump rail (thumbnails + scroll spy) -->
+  <aside class="projects-rail is-on-hero" id="projects-rail" aria-label="Jump to a project">
+    <div class="projects-rail-clip">
+      <div class="projects-rail-track">
+        <div class="projects-rail-panel" id="projects-rail-panel" role="navigation" aria-label="Projects on this page">
+        <ul class="projects-rail-list">
+          <li>
+            <a href="#weather" class="projects-rail-link" data-section="weather" aria-label="Weather Where It Matters">
+              <span class="projects-rail-label">Weather Where It Matters</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/weather.jpg" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#urbanlens" class="projects-rail-link" data-section="urbanlens" aria-label="Urban Lens">
+              <span class="projects-rail-label">Urban Lens</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/urbanlens.png" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#robotic" class="projects-rail-link" data-section="robotic" aria-label="Robotic Computing">
+              <span class="projects-rail-label">Robotic Computing</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/robotic.png" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#pictoproject" class="projects-rail-link" data-section="pictoproject" aria-label="Pic To Project">
+              <span class="projects-rail-label">Pic To Project</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/pictoproject.png" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#urban-envelopes" class="projects-rail-link" data-section="urban-envelopes" aria-label="Urban Envelopes">
+              <span class="projects-rail-label">Urban Envelopes</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/urbanenvelopes.png" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#karamba" class="projects-rail-link" data-section="karamba" aria-label="Karamba with Grid Shells">
+              <span class="projects-rail-label">Karamba with Grid Shells</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/gridshell.png" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+        <button type="button" class="projects-rail-tab" id="projects-rail-tab" aria-expanded="true" aria-controls="projects-rail-panel" title="Hide project menu">
+          <span class="projects-rail-tab-chevron" aria-hidden="true">‹</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <footer>
+    <p>&copy; 2026 Sooha Shin. Built with code [Cursor support], not a website builder.</p>
+  </footer>
+
+  <script src="js/projects.js" defer></script>
+</body>
+</html>

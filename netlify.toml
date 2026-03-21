@@ -1,0 +1,5 @@
+# .mjs must be served as JavaScript for dynamic import() to succeed in the browser.
+[[headers]]
+  for = "/vendor/@mediapipe/tasks-vision/vision_bundle.mjs"
+  [headers.values]
+    Content-Type = "text/javascript; charset=utf-8"
