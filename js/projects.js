@@ -193,7 +193,6 @@
   const bubbleImg = bubble?.querySelector('.robotic-bubble-img');
   const bubbleRich = bubble?.querySelector('.robotic-bubble-rich');
   const bubbleClose = bubble?.querySelector('.robotic-bubble-close');
-  const bubbleLoading = bubble?.querySelector('.robotic-bubble-loading');
 
   function pauseVideosInBubble() {
     bubbleRich?.querySelectorAll('video').forEach((v) => {
@@ -202,52 +201,9 @@
     });
   }
 
-  function setBubbleLoading(isLoading) {
-    if (!bubbleLoading) return;
-    bubbleLoading.hidden = !isLoading;
-  }
-
-  function waitForBubbleMedia(root) {
-    const media = root
-      ? Array.from(root.querySelectorAll('img, video'))
-      : [];
-
-    if (!media.length) {
-      setBubbleLoading(false);
-      return;
-    }
-
-    let remaining = media.length;
-
-    function finishOne() {
-      remaining -= 1;
-      if (remaining <= 0) setBubbleLoading(false);
-    }
-
-    media.forEach((el) => {
-      if (el.tagName === 'IMG') {
-        if (el.complete && el.naturalWidth > 0) {
-          finishOne();
-          return;
-        }
-        el.addEventListener('load', finishOne, { once: true });
-        el.addEventListener('error', finishOne, { once: true });
-        return;
-      }
-
-      if (el.readyState >= 2) {
-        finishOne();
-        return;
-      }
-      el.addEventListener('loadeddata', finishOne, { once: true });
-      el.addEventListener('error', finishOne, { once: true });
-    });
-  }
-
   function openBubbleImage(src) {
     if (!bubbleImg || !src) return;
     pauseVideosInBubble();
-    setBubbleLoading(true);
     if (bubbleRich) {
       bubbleRich.innerHTML = '';
       bubbleRich.hidden = true;
@@ -256,14 +212,12 @@
     bubbleImg.src = src;
     bubble?.classList.add('is-visible');
     bubble?.setAttribute('aria-hidden', 'false');
-    waitForBubbleMedia(bubble);
   }
 
   function openKarambaRich(key) {
     const source = document.getElementById(`karamba-explanation-${key}`);
     if (!source || !bubbleRich) return;
     pauseVideosInBubble();
-    setBubbleLoading(true);
     bubbleImg.hidden = true;
     bubbleImg.removeAttribute('src');
     bubbleImg.alt = '';
@@ -271,7 +225,6 @@
     bubbleRich.hidden = false;
     bubble?.classList.add('is-visible');
     bubble?.setAttribute('aria-hidden', 'false');
-    waitForBubbleMedia(bubbleRich);
   }
 
   document.querySelectorAll('.robotic-object-btn').forEach((btn) => {
@@ -288,7 +241,6 @@
 
   function closeBubble() {
     pauseVideosInBubble();
-    setBubbleLoading(false);
     bubble?.classList.remove('is-visible');
     bubble?.setAttribute('aria-hidden', 'true');
     if (bubbleRich) {
