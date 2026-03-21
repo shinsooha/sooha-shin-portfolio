@@ -200,6 +200,17 @@ html:has(#projects-hero) {
   color: var(--black);
 }
 
+.wwim-award-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wwim-award-title a:hover,
+.wwim-award-title a:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
 .wwim-award-sub {
   display: block;
   margin-top: 0.2rem;

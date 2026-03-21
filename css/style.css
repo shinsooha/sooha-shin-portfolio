@@ -692,6 +692,17 @@ select {
   color: var(--black);
 }
 
+.about-award-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.about-award-title a:hover,
+.about-award-title a:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
 .about-award-sub {
   display: block;
   margin-top: 0.2rem;
