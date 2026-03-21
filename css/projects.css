@@ -569,6 +569,20 @@ html:has(#projects-hero) {
   color: var(--black);
 }
 
+.robotic-bubble-loading {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  z-index: 2;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.85);
+  color: #fff;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
 .robotic-bubble-img {
   max-width: 70vw;
   max-height: 70vh;
