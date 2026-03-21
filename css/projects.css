@@ -574,6 +574,9 @@ html:has(#projects-hero) {
   top: 0.9rem;
   left: 1rem;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.38rem 0.7rem;
   border-radius: 999px;
   background: rgba(17, 17, 17, 0.85);
@@ -581,6 +584,21 @@ html:has(#projects-hero) {
   font-size: 0.76rem;
   letter-spacing: 0.04em;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.robotic-bubble-spinner {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: roboticBubbleSpin 0.7s linear infinite;
+}
+
+@keyframes roboticBubbleSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .robotic-bubble-img {
