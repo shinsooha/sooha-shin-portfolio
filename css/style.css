@@ -367,6 +367,27 @@ select {
   color: var(--gray-600);
 }
 
+.project-card-skills {
+  list-style: none;
+  margin: 0.45rem 0 0;
+  padding: 0;
+  max-width: 58ch;
+  line-height: 1.5;
+}
+
+.project-card-skills li {
+  display: inline;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.project-card-skills li:not(:last-child)::after {
+  content: ' · ';
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
 
 /* ============================================
    PROJECT MODAL
