@@ -594,6 +594,14 @@ select {
   margin-top: 0;
 }
 
+.credential-card--reference {
+  grid-column: 1 / -1;
+}
+
+.credential-card--reference .resume-meta {
+  margin-bottom: 0;
+}
+
 .resume-bullets--compact {
   padding-left: 1rem;
 }
@@ -949,6 +957,10 @@ footer p {
   }
 
   .credential-card--awards {
+    grid-column: auto;
+  }
+
+  .credential-card--reference {
     grid-column: auto;
   }
 
