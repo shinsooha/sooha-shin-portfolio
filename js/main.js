@@ -71,6 +71,11 @@ const projectData = {
     description: 'Exploration of parametric design and robotic fabrication techniques for creating complex 3D-printed architectural components. Investigates the intersection of computational algorithms and physical manufacturing.',
     tags: ['Grasshopper', '3D Printing', 'Parametric Design', 'Robotic Fabrication'],
   },
+  neverendinglines: {
+    title: 'NEVER-ENDING LINES',
+    description: 'Robotic carving on ceramic vessels driven by Grasshopper simulations and UR5 toolpaths, testing material behaviour, script iteration, and authorship between designer and machine.',
+    tags: ['UR5', 'Grasshopper', 'Kangaroo', 'Ceramic', 'Robotic Fabrication'],
+  },
   pictoproject: {
     title: 'PIC TO PROJECT',
     description: 'A computer vision application that analyzes photographs of buildings to estimate construction costs, material quantities, and energy performance. Streamlines the early-stage project feasibility process.',
@@ -184,7 +189,7 @@ function setupCardTilt() {
 
 // ============================================
 // Hero "PROJECTS" chevron → scroll to project cards on same page (NOT projects.html)
-// Nav "Projects" link → projects.html (red page) — kept separate
+// Nav "Projects" link → projects.html (red page), kept separate
 // ============================================
 
 const heroScroll = document.querySelector('.hero-scroll');

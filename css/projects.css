@@ -1197,7 +1197,8 @@ html:has(#projects-hero) {
 .project-detail .project-detail-header,
 .project-detail .project-detail-images,
 .project-detail .robotic-objects,
-.project-detail .robotic-media-row {
+.project-detail .robotic-media-row,
+.project-detail .neverendinglines-stack {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
@@ -1206,15 +1207,90 @@ html:has(#projects-hero) {
 .project-detail.visible .project-detail-header,
 .project-detail.visible .project-detail-images,
 .project-detail.visible .robotic-objects,
-.project-detail.visible .robotic-media-row {
+.project-detail.visible .robotic-media-row,
+.project-detail.visible .neverendinglines-stack {
   opacity: 1;
   transform: translateY(0);
 }
 
 .project-detail.visible .project-detail-images,
 .project-detail.visible .robotic-objects,
-.project-detail.visible .robotic-media-row {
+.project-detail.visible .robotic-media-row,
+.project-detail.visible .neverendinglines-stack {
   transition-delay: 0.2s;
+}
+
+/* Never-Ending Lines: two-column intro + phased videos (trim side pillarbox only) */
+.neverendinglines-stack {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--project-header-to-media-gap);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vh, 2.5rem);
+  align-items: stretch;
+}
+
+.neverendinglines-slide {
+  margin: 0;
+}
+
+.neverendinglines-phase-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 640px;
+  margin: 0 auto 0.55rem;
+}
+
+.neverendinglines-phase-num {
+  flex: 0 0 auto;
+  min-width: 1.25rem;
+  margin: 0.12rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  color: var(--black);
+}
+
+.neverendinglines-phase-desc {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--gray-800);
+}
+
+.neverendinglines-video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  max-height: min(52vh, 480px);
+  overflow: hidden;
+  border-radius: 2px;
+  background: #0a0a0a;
+}
+
+/* Light zoom trims encoded side bars without hiding the main picture */
+.neverendinglines-video-frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.045);
+  transform-origin: center center;
+}
+
+/* Robot prototypes + final: modest extra trim (often excess headroom / letterbox) */
+.neverendinglines-video-frame--prototype video {
+  object-position: center 42%;
+  transform: scale(1.09);
+  transform-origin: center center;
 }
 
 .collage-row {
