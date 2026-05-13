@@ -144,7 +144,7 @@ html:has(#projects-hero) {
 }
 
 .project-detail-desc-col p {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   color: var(--gray-800);
   line-height: 1.7;
   margin-bottom: 1.25rem;
@@ -183,14 +183,15 @@ html:has(#projects-hero) {
 
 .project-skill-list li {
   display: inline;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: var(--gray-700);
+  color: var(--gray-800);
 }
 
 .project-skill-list li:not(:last-child)::after {
   content: ' · ';
-  color: var(--gray-400);
+  color: var(--gray-800);
+  opacity: 0.45;
   font-weight: 400;
 }
 
@@ -1571,7 +1572,11 @@ html:has(#projects-hero) {
   }
 
   .project-detail-desc-col p {
-    font-size: 0.88rem;
+    font-size: 0.78rem;
+  }
+
+  .project-skill-list li {
+    font-size: 0.78rem;
   }
 
   .project-detail-inner {
