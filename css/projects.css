@@ -1197,7 +1197,8 @@ html:has(#projects-hero) {
 .project-detail .project-detail-header,
 .project-detail .project-detail-images,
 .project-detail .robotic-objects,
-.project-detail .robotic-media-row {
+.project-detail .robotic-media-row,
+.project-detail .neverendinglines-stack {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
@@ -1206,15 +1207,62 @@ html:has(#projects-hero) {
 .project-detail.visible .project-detail-header,
 .project-detail.visible .project-detail-images,
 .project-detail.visible .robotic-objects,
-.project-detail.visible .robotic-media-row {
+.project-detail.visible .robotic-media-row,
+.project-detail.visible .neverendinglines-stack {
   opacity: 1;
   transform: translateY(0);
 }
 
 .project-detail.visible .project-detail-images,
 .project-detail.visible .robotic-objects,
-.project-detail.visible .robotic-media-row {
+.project-detail.visible .robotic-media-row,
+.project-detail.visible .neverendinglines-stack {
   transition-delay: 0.2s;
+}
+
+/* Never-Ending Lines — stacked hero + phase media */
+.neverendinglines-stack {
+  max-width: 1100px;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: var(--project-header-to-media-gap);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.25rem, 5vh, 3.5rem);
+}
+
+.neverendinglines-stack video {
+  width: 100%;
+  max-height: min(78vh, 720px);
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+  background: var(--black);
+}
+
+.neverendinglines-stack figure {
+  margin: 0;
+}
+
+.neverendinglines-stack figure img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}
+
+.neverendinglines-caption {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--gray-800);
+}
+
+.neverendinglines-workflow {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--gray-800);
+  max-width: 560px;
 }
 
 .collage-row {
