@@ -73,7 +73,7 @@ const projectData = {
   },
   neverendinglines: {
     title: 'NEVER-ENDING LINES',
-    description: 'Robotic carving on ceramic vessels driven by Grasshopper simulations and UR5 toolpaths — testing material behaviour, script iteration, and authorship between designer and machine.',
+    description: 'Robotic carving on ceramic vessels driven by Grasshopper simulations and UR5 toolpaths, testing material behaviour, script iteration, and authorship between designer and machine.',
     tags: ['UR5', 'Grasshopper', 'Kangaroo', 'Ceramic', 'Robotic Fabrication'],
   },
   pictoproject: {
@@ -189,7 +189,7 @@ function setupCardTilt() {
 
 // ============================================
 // Hero "PROJECTS" chevron → scroll to project cards on same page (NOT projects.html)
-// Nav "Projects" link → projects.html (red page) — kept separate
+// Nav "Projects" link → projects.html (red page), kept separate
 // ============================================
 
 const heroScroll = document.querySelector('.hero-scroll');
