@@ -4,8 +4,6 @@
 
 :root {
   --blue: #0049BC;
-  --blue-dark: #0049BC;
-  --blue-light: #0049BC;
   --white: #ffffff;
   --off-white: #f5f5f7;
   --black: #0a0a0a;
@@ -17,6 +15,39 @@
   --gray-800: #2a2a3a;
   --font: Helvetica, "Helvetica Neue", Arial, sans-serif;
   --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ── Semantic text colors ── */
+  --text-primary:   #2a2a3a;   /* body text */
+  --text-secondary: #555566;   /* muted, labels */
+
+  /* ── Type scale ── */
+  --text-xs:      0.75rem;
+  --text-sm:      0.875rem;
+  --text-base:    1rem;
+  --text-lg:      1.125rem;
+  --text-xl:      1.5rem;
+  --text-2xl:     2rem;
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+
+  /* ── Weights ── */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  /* ── Line heights ── */
+  --leading-tight:   1.2;
+  --leading-snug:    1.4;
+  --leading-relaxed: 1.65;
+
+  /* ── Spacing ── */
+  --space-1:  0.5rem;
+  --space-2:  1rem;
+  --space-3:  1.5rem;
+  --space-4:  2rem;
+  --space-5:  3rem;
+  --space-6:  4rem;
+  --space-8:  6rem;
+  --space-12: 8rem;
 }
 
 *, *::before, *::after {
@@ -113,8 +144,8 @@ select {
 .nav-links a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   letter-spacing: 0.03em;
   transition: color 0.3s;
 }
@@ -196,10 +227,10 @@ select {
 
 .hero-subtitle p {
   color: var(--white);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.06em;
-  line-height: 1.5;
+  line-height: var(--leading-snug);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -244,8 +275,8 @@ select {
 
 .hero-hint {
   color: rgba(255, 255, 255, 0.45);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
   letter-spacing: 0.04em;
 }
 
@@ -259,8 +290,8 @@ select {
   border-radius: 100px;
   color: var(--white);
   font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   cursor: pointer;
   transition: all 0.3s var(--transition);
   backdrop-filter: blur(10px);
@@ -300,8 +331,8 @@ select {
 
 .hero-scroll span {
   color: var(--white);
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.15em;
 }
 
@@ -321,14 +352,14 @@ select {
    ============================================ */
 
 #projects {
-  padding: 10rem 4rem;
+  padding: var(--space-12) var(--space-6);
   max-width: 1300px;
   margin: 0 auto;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
   letter-spacing: -0.02em;
   margin-bottom: 3rem;
 }
@@ -343,7 +374,7 @@ select {
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12rem 4rem;
+  gap: var(--space-12) var(--space-6);
   align-items: start;
 }
 
@@ -392,12 +423,12 @@ select {
 }
 
 .project-card-text {
-  margin-top: 1rem;
+  margin-top: var(--space-2);
 }
 
 .project-title {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
   letter-spacing: 0.1em;
   margin: 0 0 0.4rem;
   color: var(--black);
@@ -406,11 +437,11 @@ select {
 .project-blurb {
   margin: 0;
   max-width: 52ch;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.55;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
   letter-spacing: 0.01em;
-  color: var(--gray-600);
+  color: var(--text-secondary);
 }
 
 .project-card-skills {
@@ -423,9 +454,9 @@ select {
 
 .project-card-skills li {
   display: inline;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--gray-700);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
 }
 
 .project-card-skills li:not(:last-child)::after {
@@ -512,8 +543,8 @@ select {
   justify-content: center;
   padding: 2rem;
   color: var(--white);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
 }
 
 .modal-base {
@@ -523,14 +554,14 @@ select {
 }
 
 .modal-info h2 {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.04em;
 }
 
 .modal-info p {
-  color: var(--gray-600);
-  line-height: 1.7;
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
   margin-top: 0.75rem;
 }
 
@@ -545,8 +576,8 @@ select {
   padding: 0.35rem 0.85rem;
   background: var(--gray-100);
   border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
   color: var(--gray-600);
   letter-spacing: 0.03em;
 }
@@ -556,7 +587,7 @@ select {
    ============================================ */
 
 #about {
-  padding: 6rem 2.5rem 8rem;
+  padding: var(--space-8) var(--space-4) var(--space-12);
   background: var(--off-white);
 }
 
@@ -568,13 +599,13 @@ select {
 /* Short bio — easy first read */
 .about-lead {
   max-width: 38rem;
-  margin-bottom: 2.75rem;
+  margin-bottom: var(--space-5);
 }
 
 .about-intro {
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-  font-weight: 600;
-  line-height: 1.45;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
   color: var(--black);
   margin: 0 0 0.85rem;
   letter-spacing: -0.01em;
@@ -582,17 +613,17 @@ select {
 
 .about-tagline {
   margin: 0;
-  font-size: 0.98rem;
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--gray-600);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
 }
 
 /* Skills region */
 .about-skills-label {
   margin: 0 0 1rem;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--gray-600);
@@ -601,15 +632,15 @@ select {
 .about-skills {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.75rem 2.5rem;
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
+  gap: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .skill-group h4 {
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--blue);
@@ -620,14 +651,14 @@ select {
   list-style: none;
   margin: 0;
   padding: 0;
-  line-height: 1.65;
+  line-height: var(--leading-relaxed);
 }
 
 .skill-tag-list li {
   display: inline;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--gray-700);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
 }
 
 .skill-tag-list li:not(:last-child)::after {
@@ -640,7 +671,7 @@ select {
 .about-credentials {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: var(--space-2);
   align-items: stretch;
 }
 
@@ -668,7 +699,7 @@ select {
 
 .resume-bullets--compact li {
   margin-bottom: 0.55rem;
-  line-height: 1.55;
+  line-height: var(--leading-relaxed);
 }
 
 .resume-year {
@@ -682,7 +713,7 @@ select {
    ============================================ */
 
 #contact {
-  padding: 3rem 2.5rem;
+  padding: var(--space-5) var(--space-4);
   background: #d8ebf7;
   text-align: center;
 }
@@ -693,7 +724,7 @@ select {
 }
 
 .resume-block {
-  margin-bottom: 2.25rem;
+  margin-bottom: var(--space-4);
 }
 
 .resume-block:last-of-type {
@@ -702,8 +733,8 @@ select {
 
 .resume-section-title {
   margin: 0 0 0.85rem;
-  font-size: 0.95rem;
-  font-weight: 400;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -712,7 +743,7 @@ select {
 
 .resume-role {
   margin: 0 0 0.35rem;
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   line-height: 1.45;
   color: var(--black);
 }
@@ -724,7 +755,7 @@ select {
 .resume-meta,
 .resume-institution {
   margin: 0 0 0.65rem;
-  font-size: 0.88rem;
+  font-size: var(--text-sm);
   color: var(--gray-800);
   line-height: 1.5;
 }
@@ -732,9 +763,9 @@ select {
 .resume-bullets {
   margin: 0;
   padding-left: 1.15rem;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--gray-800);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
 }
 
 .resume-bullets li {
@@ -750,8 +781,8 @@ select {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 0.88rem;
-  line-height: 1.45;
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
   color: var(--black);
 }
 
@@ -788,10 +819,10 @@ select {
 .about-award-sub {
   display: block;
   margin-top: 0.2rem;
-  font-weight: 400;
-  font-size: 0.88em;
-  line-height: 1.5;
-  color: var(--gray-600);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
 }
 
 .contact-social {
@@ -839,13 +870,13 @@ select {
 footer {
   background: var(--black);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.5rem 2.5rem;
+  padding: var(--space-3) var(--space-4);
   text-align: center;
 }
 
 footer p {
   color: var(--gray-400);
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
 }
 
 /* ============================================
@@ -879,8 +910,8 @@ footer p {
   backdrop-filter: blur(10px);
   border-radius: 100px;
   color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
   z-index: 1500;
   opacity: 0;
   transform: translateY(10px);
@@ -951,8 +982,8 @@ footer p {
   align-items: center;
   gap: 0.6rem;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -1001,7 +1032,7 @@ footer p {
   }
 
   #projects {
-    padding: 6rem 2rem;
+    padding: var(--space-8) var(--space-4);
   }
 
   .about-skills {
@@ -1040,7 +1071,7 @@ footer p {
   }
 
   #projects {
-    padding: 4rem 1.25rem 6rem;
+    padding: var(--space-6) var(--space-2) var(--space-8);
   }
 
   #contact {
@@ -1060,7 +1091,7 @@ footer p {
   }
 
   .nav-links a {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
   }
 
   .hero-controls {
@@ -1068,7 +1099,7 @@ footer p {
   }
 
   .hand-tracking-btn {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     padding: 0.5rem 1rem;
   }
 }

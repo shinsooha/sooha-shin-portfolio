@@ -48,7 +48,8 @@
           <h2 class="project-detail-name">WEATHER WHERE IT MATTERS, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Building energy simulations run on generic weather files that miss local conditions like urban heat islands — a gap that can shift energy predictions by up to &plusmn;40%. I built a web tool that closes that gap: pick any Sydney site, and it generates hourly temperature and humidity data for it by combining the SUEWS urban climate model with regression ML trained on surrounding weather stations.</p>
+          <p>I built a web tool that generates site-specific hourly weather data for building energy simulations — replacing the generic climate files that ignore urban heat islands and can shift energy predictions by up to &plusmn;40%.</p>
+          <p>The tool covers any Sydney location by combining the SUEWS urban climate model with regression ML trained on surrounding weather station data. I tested multiple regression models using leave-one-station-out cross-validation to confirm predictions held for locations the model hadn't been trained on, then packaged the full pipeline as an interactive Flask interface.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -142,9 +143,9 @@
           <h2 class="project-detail-name">URBAN LENS, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>UrbanLens is an AI-assisted planning analysis tool that evaluates uploaded building models against suburb specific LGA zoning and parcel datasets to identify compliance issues and assess site suitability.</p>
-          <p><strong>Workflow:</strong> A Flask web interface processes STL uploads, extracts geometry using Three.js, and combines this data with local zoning datasets. Structured prompts are then sent through an AI API to generate planning insights displayed within the interface.
-          </p>
+          <p>I built a planning analysis tool that evaluates uploaded 3D building models against LGA zoning and parcel data to flag compliance issues and assess site suitability.</p>
+          <p>The core design decision was keeping the LLM's role narrow: it doesn't read raw files. A Python backend first pre-processes uploaded STL geometry and zoning datasets into structured context before the prompt is sent.</p>
+          <p><strong>Workflow:</strong> Flask handles STL uploads, Three.js extracts the geometry, and a structured prompt embeds the processed data before calling the OpenAI API — returning feedback across four categories: contextual compatibility, environmental analysis, zoning compliance, and alternative location suggestions.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -187,8 +188,8 @@
           <h2 class="project-detail-name">NEVER-ENDING LINES, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Never-Ending Lines asks what it means to author a design when the robot executes the cut. Grasshopper workflows (Kangaroo physics, curve repulsion, and field-line methods) generated carving patterns that were mapped to ceramic cylinders and delivered as UR5 toolpaths. Getting there took three rounds of clay tests, toolpath revisions, and feed-rate adjustments before the robot’s output matched what the simulation intended.</p>
-          <p>Three physical prototypes tested clay preparation and tool settings; each loop fed back into the next until a final magnetic-fields pass produced the resolved vessel.</p>
+          <p>I used a UR5 robot arm to carve physics-generated patterns into ceramic vessels — a project where the Grasshopper toolpath is the design decision, not just a means of execution.</p>
+          <p>The carving patterns came from three methods: Kangaroo physics simulation, curve repulsion, and magnetic field lines. Each was mapped from a flat 2D plane onto a cylinder surface and translated into UR5 instructions. Reaching a clean result took three physical prototypes — adjusting clay moisture, feed rate, and tool depth with each iteration before the final magnetic-fields pass produced the resolved vessel.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -280,7 +281,8 @@
           <h2 class="project-detail-name">ROBOTIC COMPUTING, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Most 3D printing software hides the G-code. This project starts there — writing custom Python and Grasshopper scripts that control feed rate, extrusion, layer height, and curvature directly. I iterated through two prototype families via a lot of failed prints, then scaled up to a group project: a large façade panel fabricated on a KR70 industrial robot from 100% recycled plastic.</p>
+          <p>I wrote custom Python and Grasshopper scripts that generate 3D printing toolpaths from scratch — controlling feed rate, extrusion volume, layer height, and curvature directly in code rather than through standard slicer software.</p>
+          <p>I built two prototype families through iterative G-code testing, using failed prints as direct feedback on parameter decisions. The work scaled up to a group project: a large façade panel fabricated on a KR70 industrial robot using 100% recycled plastic, where deliberate overhang geometry in the toolpath creates shifting shadow patterns when the panel is lit.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -330,8 +332,9 @@
           <h2 class="project-detail-name">PIC TO PROJECT, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Take a photo of any building facade and get back a breakdown — how much is concrete, brick, wood, glass, vegetation, and what percentage each covers. Useful for quick material audits, cost estimates, or sustainability assessments without a site visit.</p>
-          <p>The model was trained across multiple annotation rounds until quality outweighed dataset size: final accuracy reached 98.2% mAP and 97.4% precision. Results export as an annotated image and a data report.</p>
+          <p>I built a computer vision tool that identifies building materials from a façade photo and returns the coverage percentage of each — concrete, brick, wood, glass, and vegetation — for fast material audits and sustainability assessments without a site visit.</p>
+          <p>I trained a YOLOv11 instance segmentation model using Roboflow across multiple annotation rounds, finding that annotation quality mattered more than dataset size. The final model reached 98.2% mAP and 97.4% precision.</p>
+          <p><strong>Workflow:</strong> An uploaded image is sent to the Roboflow API via a Flask backend, which returns per-material detections and coverage percentages alongside an annotated output image.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -362,7 +365,9 @@
           <h2 class="project-detail-name">URBAN ENVELOPES, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Select any Sydney block on the web interface and real OpenStreetMap road and land data is pulled live into Grasshopper, generating parametric building envelopes, population density analysis, transport routes, and green space distribution on actual Sydney geography. Parameters updated on the website feed back into Grasshopper and update the Three.js viewer in real time. </p>
+          <p>I built a parametric urban design tool that connects a web interface, Grasshopper, and a Three.js viewer — changes to any parameter on the site regenerate the 3D model in real time against live city data.</p>
+          <p>The tool pulls road and land-use geometry live from OpenStreetMap into Grasshopper, which generates building envelopes, population density analysis, transport routes, and green space distribution for any Sydney block.</p>
+          <p><strong>Workflow:</strong> Parameter changes post from the browser to a local server, trigger a Grasshopper recompute against the current OSM dataset, and push updated meshes to the Three.js viewer.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -391,7 +396,8 @@
           <h2 class="project-detail-name">KARAMBA WITH GRID SHELLS, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>A catenary shell is structurally efficient by nature — it's the shape a hanging chain makes. I used Kangaroo to find the form through physics simulation, then Karamba3D to run real load tests and size the members before cutting anything. The final structure was laser-cut and hand-assembled.</p>
+          <p>I designed and fabricated a geodesic grid shell using physics simulation for form-finding and structural analysis, validating every member before cutting a single piece.</p>
+          <p>I used Kangaroo to derive the catenary shell form — the shape a hanging chain makes, which transfers load in pure compression. I then ran Karamba3D load tests across four conditions (gravity, snow, wind, and combined loads) to size the cross-sections and confirm utilization before generating the geometry for laser cutting and hand assembly.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
