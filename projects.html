@@ -7,6 +7,7 @@
   <meta name="description" content="Explore the works of Sooha Shin: computational design, urban computing, robotic fabrication, and more.">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/projects.css">
 </head>
@@ -48,8 +49,9 @@
           <h2 class="project-detail-name">WEATHER WHERE IT MATTERS, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>I built a web tool that generates site-specific hourly weather data for building energy simulations — replacing the generic climate files that ignore urban heat islands and can shift energy predictions by up to &plusmn;40%.</p>
-          <p>The tool covers any Sydney location by combining the SUEWS urban climate model with regression ML trained on surrounding weather station data. I tested multiple regression models using leave-one-station-out cross-validation to confirm predictions held for locations the model hadn't been trained on, then packaged the full pipeline as an interactive Flask interface.</p>
+          <p>Architects rely on weather files like EPW and TMY to test how buildings will perform, but these are built from long-term averages that miss urban heat island effects. Research shows this can shift energy load estimates by up to 40%.</p>
+          <p>Weather Where It Matters is an interactive computational design tool that predicts microclimate conditions for any user-selected location, including sites lacking historical weather records. Built in collaboration with Arup.</p>
+          <p>The tool runs the SUEWS urban climate model at surrounding weather stations to generate physics-based datasets, which are combined with historical data and passed through four regression models to predict temperature and humidity at the chosen site. Predictions were validated using Leave-One-Station-Out testing across seven Auckland stations. Delivered through a web interface designed for non-technical AEC users.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -145,7 +147,7 @@
         <div class="project-detail-desc-col">
           <p>I built a planning analysis tool that evaluates uploaded 3D building models against LGA zoning and parcel data to flag compliance issues and assess site suitability.</p>
           <p>The core design decision was keeping the LLM's role narrow: it doesn't read raw files. A Python backend first pre-processes uploaded STL geometry and zoning datasets into structured context before the prompt is sent.</p>
-          <p><strong>Workflow:</strong> Flask handles STL uploads, Three.js extracts the geometry, and a structured prompt embeds the processed data before calling the OpenAI API — returning feedback across four categories: contextual compatibility, environmental analysis, zoning compliance, and alternative location suggestions.</p>
+          <p><strong>Workflow:</strong> Flask handles STL uploads, Three.js extracts the geometry, and a structured prompt embeds the processed data before calling the OpenAI API, returning feedback across four categories: contextual compatibility, environmental analysis, zoning compliance, and alternative location suggestions.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -188,8 +190,8 @@
           <h2 class="project-detail-name">NEVER-ENDING LINES, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>I used a UR5 robot arm to carve physics-generated patterns into ceramic vessels — a project where the Grasshopper toolpath is the design decision, not just a means of execution.</p>
-          <p>The carving patterns came from three methods: Kangaroo physics simulation, curve repulsion, and magnetic field lines. Each was mapped from a flat 2D plane onto a cylinder surface and translated into UR5 instructions. Reaching a clean result took three physical prototypes — adjusting clay moisture, feed rate, and tool depth with each iteration before the final magnetic-fields pass produced the resolved vessel.</p>
+          <p>I used a UR5 robot arm to carve physics-generated patterns into ceramic vessels. The Grasshopper toolpath is the design decision here, not just a means of execution.</p>
+          <p>The carving patterns came from three methods: Kangaroo physics simulation, curve repulsion, and magnetic field lines. Each was mapped from a flat 2D plane onto a cylinder surface and translated into UR5 instructions. Reaching a clean result took three physical prototypes, adjusting clay moisture, feed rate, and tool depth with each iteration before the final magnetic-fields pass produced the resolved vessel.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -281,7 +283,7 @@
           <h2 class="project-detail-name">ROBOTIC COMPUTING, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>I wrote custom Python and Grasshopper scripts that generate 3D printing toolpaths from scratch — controlling feed rate, extrusion volume, layer height, and curvature directly in code rather than through standard slicer software.</p>
+          <p>I wrote custom Python and Grasshopper scripts that generate 3D printing toolpaths from scratch, controlling feed rate, extrusion volume, layer height, and curvature directly in code rather than through standard slicer software.</p>
           <p>I built two prototype families through iterative G-code testing, using failed prints as direct feedback on parameter decisions. The work scaled up to a group project: a large façade panel fabricated on a KR70 industrial robot using 100% recycled plastic, where deliberate overhang geometry in the toolpath creates shifting shadow patterns when the panel is lit.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
@@ -332,7 +334,7 @@
           <h2 class="project-detail-name">PIC TO PROJECT, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>I built a computer vision tool that identifies building materials from a façade photo and returns the coverage percentage of each — concrete, brick, wood, glass, and vegetation — for fast material audits and sustainability assessments without a site visit.</p>
+          <p>I built a computer vision tool that identifies building materials from a façade photo and returns the coverage percentage of each (concrete, brick, wood, glass, and vegetation) for fast material audits and sustainability assessments without a site visit.</p>
           <p>I trained a YOLOv11 instance segmentation model using Roboflow across multiple annotation rounds, finding that annotation quality mattered more than dataset size. The final model reached 98.2% mAP and 97.4% precision.</p>
           <p><strong>Workflow:</strong> An uploaded image is sent to the Roboflow API via a Flask backend, which returns per-material detections and coverage percentages alongside an annotated output image.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
@@ -365,7 +367,7 @@
           <h2 class="project-detail-name">URBAN ENVELOPES, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>I built a parametric urban design tool that connects a web interface, Grasshopper, and a Three.js viewer — changes to any parameter on the site regenerate the 3D model in real time against live city data.</p>
+          <p>I built a parametric urban design tool that connects a web interface, Grasshopper, and a Three.js viewer. Changes to any parameter on the site regenerate the 3D model in real time against live city data.</p>
           <p>The tool pulls road and land-use geometry live from OpenStreetMap into Grasshopper, which generates building envelopes, population density analysis, transport routes, and green space distribution for any Sydney block.</p>
           <p><strong>Workflow:</strong> Parameter changes post from the browser to a local server, trigger a Grasshopper recompute against the current OSM dataset, and push updated meshes to the Three.js viewer.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
@@ -397,7 +399,7 @@
         </div>
         <div class="project-detail-desc-col">
           <p>I designed and fabricated a geodesic grid shell using physics simulation for form-finding and structural analysis, validating every member before cutting a single piece.</p>
-          <p>I used Kangaroo to derive the catenary shell form — the shape a hanging chain makes, which transfers load in pure compression. I then ran Karamba3D load tests across four conditions (gravity, snow, wind, and combined loads) to size the cross-sections and confirm utilization before generating the geometry for laser cutting and hand assembly.</p>
+          <p>I used Kangaroo to derive the catenary shell form, the shape a hanging chain makes, which transfers load in pure compression. I then ran Karamba3D load tests across four conditions (gravity, snow, wind, and combined loads) to size the cross-sections and confirm utilization before generating the geometry for laser cutting and hand assembly.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -445,7 +447,7 @@
       <p>For the loads I tested various conditions</p>
       <ul>
         <li><strong>Gravity:</strong> component [The structures own weight]</li>
-        <li><strong>Snow:</strong> 1–1.5 kN/m²</li>
+        <li><strong>Snow:</strong> 1 to 1.5 kN/m²</li>
         <li><strong>Wind:</strong> 0.84 kN/m²</li>
       </ul>
       <p><strong>Combinations of load conditions:</strong></p>
