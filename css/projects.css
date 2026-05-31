@@ -2,10 +2,10 @@
    PROJECTS PAGE
    ============================================ */
 
-/* Match site-wide Helvetica stack (style.css loads first; reinforce for this page) */
+/* Match site-wide font token (style.css loads first; reinforce for this page) */
 html.projects-page,
 html.projects-page body {
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font);
 }
 
 /* Global `html { scroll-behavior: smooth }` (style.css) queues scroll animations and

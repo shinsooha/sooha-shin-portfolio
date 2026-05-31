@@ -2,6 +2,14 @@
    SOOHA SHIN — PORTFOLIO
    ============================================ */
 
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
 :root {
   --blue: #0049BC;
   --white: #ffffff;
@@ -13,7 +21,7 @@
   --gray-600: #555566;
   --gray-700: #444455;
   --gray-800: #2a2a3a;
-  --font: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --font: 'Pretendard Variable', Helvetica, "Helvetica Neue", Arial, sans-serif;
   --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   /* ── Semantic text colors ── */
@@ -388,6 +396,7 @@ select {
 }
 
 .project-img-wrap {
+  position: relative;
   overflow: visible;
   border-radius: 3px;
   height: 55vh;
@@ -422,47 +431,100 @@ select {
   transform-origin: center center;
 }
 
-.project-card-text {
-  margin-top: var(--space-2);
+/* Hover/focus overlay — blurb + skills veil over card media */
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  padding: var(--space-3);
+  background: rgba(10, 10, 10, 0.78);
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
-.project-title {
-  font-size: var(--text-lg);
-  font-weight: var(--weight-regular);
-  letter-spacing: 0.1em;
-  margin: 0 0 0.4rem;
-  color: var(--black);
+.project-card:hover .project-card-overlay,
+.project-card:focus-within .project-card-overlay {
+  opacity: 1;
+}
+
+/* Inner content slides up subtly as the veil fades in */
+.project-card-overlay > * {
+  transform: translateY(12px);
+  transition: transform 0.3s ease-out;
+}
+
+.project-card:hover .project-card-overlay > *,
+.project-card:focus-within .project-card-overlay > * {
+  transform: translateY(0);
 }
 
 .project-blurb {
   margin: 0;
-  max-width: 52ch;
+  max-width: 42ch;
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
   line-height: var(--leading-relaxed);
   letter-spacing: 0.01em;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .project-card-skills {
   list-style: none;
-  margin: 0.45rem 0 0;
+  margin: 0;
   padding: 0;
-  max-width: 58ch;
-  line-height: 1.5;
+  max-width: 46ch;
+  line-height: 1.6;
 }
 
 .project-card-skills li {
   display: inline;
   font-size: var(--text-xs);
   font-weight: var(--weight-medium);
-  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .project-card-skills li:not(:last-child)::after {
   content: ' · ';
-  color: var(--gray-400);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 400;
+}
+
+/* Project name — always visible below the image, all caps */
+.project-title {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* Touch devices (no hover): name stays below; hide the hover-only veil */
+@media (hover: none) {
+  .project-card-overlay {
+    display: none;
+  }
+}
+
+/* Respect reduced-motion: fade only, no slide */
+@media (prefers-reduced-motion: reduce) {
+  .project-card-overlay,
+  .project-card-overlay > * {
+    transition-duration: 0.01ms;
+  }
+
+  .project-card-overlay > * {
+    transform: none;
+  }
 }
 
 
@@ -586,126 +648,102 @@ select {
    ABOUT SECTION
    ============================================ */
 
+/* ============================================
+   ABOUT — left-aligned statement
+   ============================================ */
+
 #about {
-  padding: var(--space-8) var(--space-4) var(--space-12);
+  padding: var(--space-12) var(--space-4);
   background: var(--off-white);
 }
 
 .about-container {
-  max-width: 960px;
+  max-width: 880px;
   margin: 0 auto;
 }
 
-/* Short bio — easy first read */
-.about-lead {
-  max-width: 38rem;
-  margin-bottom: var(--space-5);
-}
-
-.about-intro {
-  font-size: var(--text-lg);
+.about-heading {
+  font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
-  line-height: var(--leading-snug);
-  color: var(--black);
-  margin: 0 0 0.85rem;
   letter-spacing: -0.01em;
+  color: var(--black);
+  margin: 0 0 var(--space-3);
 }
 
-.about-tagline {
-  margin: 0;
+.about-statement {
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
   line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+  max-width: 46rem;
+  margin: 0 0 var(--space-6);
+}
+
+.about-line {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.about-line-label {
+  flex: 0 0 9rem;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
   color: var(--text-secondary);
 }
 
-/* Skills region */
-.about-skills-label {
-  margin: 0 0 1rem;
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--gray-600);
+.about-line-body {
+  flex: 1;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
 }
 
-.about-skills {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-3) var(--space-4);
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-5);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.skill-group h4 {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--blue);
-  margin: 0 0 0.65rem;
-}
-
-.skill-tag-list {
+.about-line-list {
+  flex: 1;
   list-style: none;
   margin: 0;
   padding: 0;
-  line-height: var(--leading-relaxed);
+  counter-reset: about-item;
 }
 
-.skill-tag-list li {
-  display: inline;
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
+.about-line-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.4rem;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+  counter-increment: about-item;
+}
+
+.about-line-list li:last-child {
+  margin-bottom: 0;
+}
+
+.about-line-list li::before {
+  content: counter(about-item);
+  position: absolute;
+  left: 0;
   color: var(--text-secondary);
 }
 
-.skill-tag-list li:not(:last-child)::after {
-  content: ' · ';
-  color: var(--gray-400);
-  font-weight: 400;
+.about-line-body a,
+.about-line-list a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-/* Credentials — three calm cards */
-.about-credentials {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-2);
-  align-items: stretch;
-}
-
-.about-credentials .resume-block {
-  margin-bottom: 0;
-}
-
-.credential-card {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
-  padding: 1.35rem 1.25rem;
-  margin-bottom: 0;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
-}
-
-.credential-card .resume-section-title {
-  margin-top: 0;
-}
-
-
-.resume-bullets--compact {
-  padding-left: 1rem;
-}
-
-.resume-bullets--compact li {
-  margin-bottom: 0.55rem;
-  line-height: var(--leading-relaxed);
-}
-
-.resume-year {
-  font-weight: 600;
-  color: var(--gray-600);
-  margin-left: 0.25rem;
+.about-line-body a:hover,
+.about-line-body a:focus-visible,
+.about-line-list a:hover,
+.about-line-list a:focus-visible {
+  text-decoration-thickness: 2px;
 }
 
 /* ============================================
@@ -723,107 +761,6 @@ select {
   margin: 0 auto;
 }
 
-.resume-block {
-  margin-bottom: var(--space-4);
-}
-
-.resume-block:last-of-type {
-  margin-bottom: 0;
-}
-
-.resume-section-title {
-  margin: 0 0 0.85rem;
-  font-size: var(--text-base);
-  font-weight: var(--weight-regular);
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--black);
-}
-
-.resume-role {
-  margin: 0 0 0.35rem;
-  font-size: var(--text-base);
-  line-height: 1.45;
-  color: var(--black);
-}
-
-.resume-role strong {
-  font-weight: 700;
-}
-
-.resume-meta,
-.resume-institution {
-  margin: 0 0 0.65rem;
-  font-size: var(--text-sm);
-  color: var(--gray-800);
-  line-height: 1.5;
-}
-
-.resume-bullets {
-  margin: 0;
-  padding-left: 1.15rem;
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: var(--text-primary);
-}
-
-.resume-bullets li {
-  margin-bottom: 0.35rem;
-}
-
-.resume-bullets li:last-child {
-  margin-bottom: 0;
-}
-
-/* Awards inside credential card */
-.credential-card--awards .about-awards-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: var(--text-base);
-  line-height: var(--leading-snug);
-  color: var(--black);
-}
-
-.credential-card--awards .about-awards-list li {
-  margin-bottom: 1rem;
-  padding: 0;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.credential-card--awards .about-awards-list li:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.about-award-title {
-  display: block;
-  font-weight: 700;
-  color: var(--black);
-}
-
-.about-award-title a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.about-award-title a:hover,
-.about-award-title a:focus-visible {
-  text-decoration-thickness: 2px;
-}
-
-.about-award-sub {
-  display: block;
-  margin-top: 0.2rem;
-  font-weight: var(--weight-regular);
-  font-size: var(--text-sm);
-  line-height: var(--leading-snug);
-  color: var(--text-secondary);
-}
 
 .contact-social {
   display: flex;
@@ -1000,16 +937,6 @@ footer p {
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 1024px) {
-  .about-credentials {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .credential-card--awards {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 900px) {
   .hero-text {
     flex-direction: column;
@@ -1035,20 +962,13 @@ footer p {
     padding: var(--space-8) var(--space-4);
   }
 
-  .about-skills {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .about-line {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
-  .about-credentials {
-    grid-template-columns: 1fr;
-    max-width: 28rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .credential-card--awards {
-    grid-column: auto;
+  .about-line-label {
+    flex: none;
   }
 
   #nav {
@@ -1076,10 +996,6 @@ footer p {
 
   #contact {
     padding: 4rem 1.25rem 3rem;
-  }
-
-  .about-credentials {
-    max-width: none;
   }
 
   .modal-content {
