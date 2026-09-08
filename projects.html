@@ -7,10 +7,12 @@
   <meta name="description" content="Explore the works of Sooha Shin: computational design, urban computing, robotic fabrication, and more.">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/projects.css">
 </head>
 <body>
+  <a href="#weather" class="skip-to-content">Skip to content</a>
 
   <!-- Navigation -->
   <nav id="nav" class="projects-nav">
@@ -19,6 +21,7 @@
       <a href="projects.html">Projects</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
+      <a href="assets/SoohaShin_Resume_AEC.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     </div>
   </nav>
 
@@ -26,7 +29,7 @@
   <section id="projects-hero">
     <div class="projects-hero-content">
       <h1 class="projects-hero-title">PROJECTS</h1>
-      <p class="projects-hero-subtitle">EXPLORE MY WORKS</p>
+      <p class="projects-hero-subtitle">EXPLORE MY WORK</p>
       <button class="projects-hero-arrow" aria-label="Scroll down to projects">
         <svg width="64" height="64" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter">
           <line x1="14" y1="14" x2="42" y2="42"/>
@@ -46,8 +49,9 @@
           <h2 class="project-detail-name">WEATHER WHERE IT MATTERS, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p><strong>Industry Problem:</strong> The absence of site-specific weather data in building energy modelling can lead to prediction errors of up to &plusmn;40%, revealing a key limitation in current simulation workflows.</p>
-          <p>Standard simulations rely on generalised weather files that overlook urban heat island effects and local variability. This project develops a physics-informed prediction framework combining the SUEWS urban climate model with regression machine learning to estimate hourly temperature and humidity at unmeasured locations. The system learns from surrounding weather stations and urban surface characteristics to generate validated, site-specific climate data, delivered through an interactive web tool for architecture and engineering workflows.</p>
+          <p>Architects rely on weather files like EPW and TMY to test how buildings will perform, but these are built from long-term averages that miss urban heat island effects. Research shows this can shift energy load estimates by up to 40%.</p>
+          <p>Weather Where It Matters is an interactive computational design tool that predicts microclimate conditions for any user-selected location, including sites lacking historical weather records. Built in collaboration with Arup.</p>
+          <p>The tool runs the SUEWS urban climate model at surrounding weather stations to generate physics-based datasets, which are combined with historical data and passed through four regression models to predict temperature and humidity at the chosen site. Predictions were validated using Leave-One-Station-Out testing across seven Auckland stations. Delivered through a web interface designed for non-technical AEC users.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -62,8 +66,8 @@
                 <span class="wwim-award-sub">UNSW Built Environment Graduation Exhibition</span>
               </li>
               <li>
-                <span class="wwim-award-title"><a href="https://www.dezeen.com/2025/12/13/self-repair-headphones-university-of-new-south-wales-sydney-schoolshows/" target="_blank" rel="noopener noreferrer">Dezeen</a>, UNSW School Show coverage</span>
-                <span class="wwim-award-sub">UNSW Built Environment graduation projects roundup</span>
+                <span class="wwim-award-title">Featured in <a href="https://www.dezeen.com/2025/12/13/self-repair-headphones-university-of-new-south-wales-sydney-schoolshows/" target="_blank" rel="noopener noreferrer">Dezeen</a>'s UNSW School Show 2025 roundup</span>
+                <span class="wwim-award-sub">UNSW Built Environment graduation projects</span>
               </li>
               <li>
                 <span class="wwim-award-title">Project was created with industry collaboration</span>
@@ -81,7 +85,7 @@
             <img src="assets/projects/WWIM/wwim-app-main.png" alt="WWIM: site selection and weather station map interface" loading="lazy">
           </div>
           <div class="collage-hero-video">
-            <video src="assets/projects/WWIM/wwim-hero-demo.mp4" autoplay loop muted playsinline></video>
+            <video src="assets/projects/WWIM/wwim-hero-demo.mp4" autoplay loop muted playsinline aria-label="WWIM: live demo of the weather prediction web tool"></video>
           </div>
           <div class="collage-hero-shot">
             <img src="assets/projects/WWIM/wwim-dashboard.png" alt="WWIM: prediction analysis dashboard" loading="lazy">
@@ -141,9 +145,9 @@
           <h2 class="project-detail-name">URBAN LENS, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>UrbanLens is an AI-assisted planning analysis tool that evaluates uploaded building models against suburb specific LGA zoning and parcel datasets to identify compliance issues and assess site suitability.</p>
-          <p><strong>Workflow:</strong> A Flask web interface processes STL uploads, extracts geometry using Three.js, and combines this data with local zoning datasets. Structured prompts are then sent through an AI API to generate planning insights displayed within the interface.
-          </p>
+          <p>I built a planning analysis tool that evaluates uploaded 3D building models against LGA zoning and parcel data to flag compliance issues and assess site suitability.</p>
+          <p>The core design decision was keeping the LLM's role narrow: it doesn't read raw files. A Python backend first pre-processes uploaded STL geometry and zoning datasets into structured context before the prompt is sent.</p>
+          <p><strong>Workflow:</strong> Flask handles STL uploads, Three.js extracts the geometry, and a structured prompt embeds the processed data before calling the OpenAI API, returning feedback across four categories: contextual compatibility, environmental analysis, zoning compliance, and alternative location suggestions.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -186,8 +190,8 @@
           <h2 class="project-detail-name">NEVER-ENDING LINES, 2025</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Never-Ending Lines asks what it means to author a design when the robot executes the cut. Grasshopper workflows (Kangaroo physics, curve repulsion, and field-line methods) generated carving patterns that were mapped to ceramic cylinders and delivered as UR5 toolpaths. The work moves between simulation, scripting, and material trials until the robot’s output matched the intent behind the geometry.</p>
-          <p>Three physical prototypes tested clay preparation and tool settings; each loop fed back into the next until a final magnetic-fields pass produced the resolved vessel.</p>
+          <p>I used a UR5 robot arm to carve physics-generated patterns into ceramic vessels. The Grasshopper toolpath is the design decision here, not just a means of execution.</p>
+          <p>The carving patterns came from three methods: Kangaroo physics simulation, curve repulsion, and magnetic field lines. Each was mapped from a flat 2D plane onto a cylinder surface and translated into UR5 instructions. Reaching a clean result took three physical prototypes, adjusting clay moisture, feed rate, and tool depth with each iteration before the final magnetic-fields pass produced the resolved vessel.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -204,7 +208,7 @@
             <p class="neverendinglines-phase-desc">Carving toolpaths developed and simulated on a 2D plane in Grasshopper, establishing the base geometry before any cylindrical mapping.</p>
           </div>
           <div class="neverendinglines-video-frame">
-            <video src="assets/projects/NEVERENDINGLINES/1_Craving_on_2D_plane.mp4" autoplay loop muted playsinline></video>
+            <video src="assets/projects/NEVERENDINGLINES/1_Craving_on_2D_plane.mp4" autoplay loop muted playsinline aria-label="Phase 1: carving toolpaths simulated on a 2D plane in Grasshopper"></video>
           </div>
         </div>
 
@@ -271,7 +275,123 @@
     </div>
   </section>
 
-  <!-- 4. Robotic Computing -->
+  <!-- 4. Goat Island -->
+  <section class="project-detail" id="goatisland">
+    <div class="project-detail-inner">
+      <div class="project-detail-header">
+        <div class="project-detail-title-col">
+          <h2 class="project-detail-name">GOAT ISLAND, 2025</h2>
+        </div>
+        <div class="project-detail-desc-col">
+          <p>Goat Island Redevelopment reimagines the harbour island as an accessible retreat for elder visitors, centred on a waterfront transportation terminal and residential units. As part of a team, I worked on the Revit model and the full construction documentation set: site plan, floor plans, elevations and sections with grids, levels and coordinated sheets: then took coordination further by running clash detection across the federated house and community-centre models in Autodesk Construction Cloud, identifying and logging wall, floor and panel clashes against the wharf for resolution.</p>
+          <div class="project-skill-block" aria-label="Design fields and skills">
+            <p class="project-skill-label">Design fields/skills</p>
+            <ul class="project-skill-list">
+              <li>BIM</li><li>Revit</li><li>Autodesk Construction Cloud</li><li>Clash Detection</li><li>Documentation</li>
+            </ul>
+          </div>
+          <div class="goatisland-downloads">
+            <a class="goatisland-download" href="assets/projects/GOATISLAND/drawing-set.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              View full drawing set (PDF)
+            </a>
+            <a class="goatisland-download" href="assets/projects/GOATISLAND/clash-report.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              View clash report (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-collage goatisland-collage">
+
+        <!-- Hero: 3D view -->
+        <div class="collage-row goatisland-hero">
+          <img src="assets/projects/GOATISLAND/3d-view-1.png" alt="Goat Island: 3D view looking across the wharf to the waterfront transportation terminal, with residential apartment blocks on the ridge behind" loading="lazy">
+          <img src="assets/projects/GOATISLAND/3d-view-2.png" alt="Goat Island: aerial 3D view of the residential blocks and circular community centre linked by covered walkways across the contoured site" loading="lazy">
+        </div>
+
+        <!-- Documentation gallery -->
+        <div class="collage-row goatisland-block">
+          <h3 class="goatisland-block-title">Documentation</h3>
+          <p class="goatisland-block-note">Construction documentation set produced from the Revit model: site plan, floor plan, elevations and sections, drawn with shared grids and levels across coordinated A1 sheets.</p>
+          <div class="goatisland-gallery">
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/site-plan.png" aria-label="Site plan, view larger">
+                <img src="assets/projects/GOATISLAND/site-plan.png" alt="Goat Island site plan: island contours, wharf and moored boats, with the terminal and residential buildings set on grid lines" loading="lazy">
+              </button>
+              <figcaption>Site Plan</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/elevation-1.png" aria-label="Elevation 1, view larger">
+                <img src="assets/projects/GOATISLAND/elevation-1.png" alt="House south elevation: four-storey residential block stepping down to the wharf, annotated with level lines and grid references" loading="lazy">
+              </button>
+              <figcaption>Elevation 1</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/elevation-2.png" aria-label="Elevation 2, view larger">
+                <img src="assets/projects/GOATISLAND/elevation-2.png" alt="House west elevation: pitched-roof residential volumes above the terminal glazing, with dimension and level annotations" loading="lazy">
+              </button>
+              <figcaption>Elevation 2</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/section.png" aria-label="Section, view larger">
+                <img src="assets/projects/GOATISLAND/section.png" alt="Long section through the scheme: internal floor levels of the residential block cut against the terminal and moored boats at the wharf" loading="lazy">
+              </button>
+              <figcaption>Section</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/floor-plan.png" aria-label="Floor plan, view larger">
+                <img src="assets/projects/GOATISLAND/floor-plan.png" alt="Community centre Level 00 floor plan: lobby, seating and service rooms laid out on a curved plan with grids and dimensions" loading="lazy">
+              </button>
+              <figcaption>Floor Plan</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/cc-elevation-1.png" aria-label="Community centre elevation 1, view larger">
+                <img src="assets/projects/GOATISLAND/cc-elevation-1.png" alt="Community centre south elevation: curved roof canopy over the waterfront terminal, annotated with material callouts" loading="lazy">
+              </button>
+              <figcaption>Community Centre — Elevation 1</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/cc-elevation-2.png" aria-label="Community centre elevation 2, view larger">
+                <img src="assets/projects/GOATISLAND/cc-elevation-2.png" alt="Community centre west elevation: full-height glazed façade under the curved roof, sitting above the wharf edge" loading="lazy">
+              </button>
+              <figcaption>Community Centre — Elevation 2</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Clash coordination -->
+        <div class="collage-row goatisland-block">
+          <h3 class="goatisland-block-title">Clash Coordination</h3>
+          <p class="goatisland-block-note">Federated-model clash detection in Autodesk Construction Cloud, coordinating the house model against the community-centre model.</p>
+          <div class="goatisland-clash-grid">
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/clash-17.png" aria-label="Issue 17, wall and wharf clash, view larger">
+                <img src="assets/projects/GOATISLAND/clash-17.png" alt="Clash issue 17: a red basic wall from the house model cutting through the green wharf geometry of the community-centre model" loading="lazy">
+              </button>
+              <figcaption>#17 — Wall / wharf clash</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/clash-13.png" aria-label="Issue 13, wall and wharf clash, view larger">
+                <img src="assets/projects/GOATISLAND/clash-13.png" alt="Clash issue 13: a red wall blade passing through the green wharf decking above the moored boats" loading="lazy">
+              </button>
+              <figcaption>#13 — Wall / wharf clash</figcaption>
+            </figure>
+            <figure class="goatisland-figure">
+              <button type="button" class="goatisland-lightbox-btn" data-explanation="assets/projects/GOATISLAND/clash-9.png" aria-label="Issue 9, brick wall and wharf clash, view larger">
+                <img src="assets/projects/GOATISLAND/clash-9.png" alt="Clash issue 9: a red brick wall running diagonally across the green wharf walkways in the federated model" loading="lazy">
+              </button>
+              <figcaption>#9 — Brick wall / wharf clash</figcaption>
+            </figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Robotic Computing -->
   <section class="project-detail" id="robotic">
     <div class="project-detail-inner">
       <div class="project-detail-header">
@@ -279,8 +399,8 @@
           <h2 class="project-detail-name">ROBOTIC COMPUTING, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Robotic Computing explored custom G-code generation for FDM 3D printing through Python and Grasshopper. Working incrementally from failed prints to refined parametric geometries, the project developed two prototype families; an organic multi-brep form and a lofted elliptical vessel. Each tested across multiple variables including feed rate, extrusion rate, layer height, spike amplitude, and curvature. The course culminated in a group large-scale façade panel fabricated on a KR70 industrial robot using 100% recycled plastic.
-          </p>
+          <p>I wrote custom Python and Grasshopper scripts that generate 3D printing toolpaths from scratch, controlling feed rate, extrusion volume, layer height, and curvature directly in code rather than through standard slicer software.</p>
+          <p>I built two prototype families through iterative G-code testing, using failed prints as direct feedback on parameter decisions. The work scaled up to a group project: a large façade panel fabricated on a KR70 industrial robot using 100% recycled plastic, where deliberate overhang geometry in the toolpath creates shifting shadow patterns when the panel is lit.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -291,13 +411,13 @@
       </div>
       <div class="robotic-objects" role="group" aria-label="Robotic Computing objects">
         <button type="button" class="robotic-object-btn" data-explanation="assets/projects/FACADES/object1%20explanation.png" aria-label="Object 1, view explanation">
-          <img src="assets/projects/FACADES/object1.png" alt="Object 1" loading="lazy">
+          <img src="assets/projects/FACADES/object1.png" alt="Robotic Computing: organic multi-brep 3D printed form" loading="lazy">
         </button>
         <button type="button" class="robotic-object-btn" data-explanation="assets/projects/FACADES/object2%20explanation.png" aria-label="Object 2, view explanation">
-          <img src="assets/projects/FACADES/object2.png" alt="Object 2" loading="lazy">
+          <img src="assets/projects/FACADES/object2.png" alt="Robotic Computing: lofted elliptical vessel, variable layer height" loading="lazy">
         </button>
         <button type="button" class="robotic-object-btn" data-explanation="assets/projects/FACADES/object3%20explanation.png" aria-label="Object 3, view explanation">
-          <img src="assets/projects/FACADES/object3.png" alt="Object 3" loading="lazy">
+          <img src="assets/projects/FACADES/object3.png" alt="Robotic Computing: parametric spiked form with custom extrusion profile" loading="lazy">
         </button>
       </div>
       <div class="robotic-media-row">
@@ -322,7 +442,7 @@
     </div>
   </div>
 
-  <!-- 5. Pic To Project -->
+  <!-- 6. Pic To Project -->
   <section class="project-detail" id="pictoproject">
     <div class="project-detail-inner">
       <div class="project-detail-header">
@@ -330,8 +450,9 @@
           <h2 class="project-detail-name">PIC TO PROJECT, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>A Flask-based web tool that uses Roboflow's instance segmentation to analyse uploaded or live-captured photos of buildings, returning estimated percentage coverage of five structural materials (concrete, brick, wood, glass, and vegetation). The model was trained iteratively across multiple versions, refining image quality, annotation consistency, and dataset size to achieve a final mAP of 98.2% and precision of 97.4%. The system outputs a downloadable annotated image and material data report, designed for early-stage design decisions, cost estimation, sustainability reporting, and material inventory management within the AEC industry, aligning with UN SDG Goals 9 and 11.
-          </p>
+          <p>I built a computer vision tool that identifies building materials from a façade photo and returns the coverage percentage of each (concrete, brick, wood, glass, and vegetation) for fast material audits and sustainability assessments without a site visit.</p>
+          <p>I trained a YOLOv11 instance segmentation model using Roboflow across multiple annotation rounds, finding that annotation quality mattered more than dataset size. The final model reached 98.2% mAP and 97.4% precision.</p>
+          <p><strong>Workflow:</strong> An uploaded image is sent to the Roboflow API via a Flask backend, which returns per-material detections and coverage percentages alongside an annotated output image.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -354,7 +475,7 @@
     </div>
   </section>
 
-  <!-- 6. Urban Envelopes -->
+  <!-- 7. Urban Envelopes -->
   <section class="project-detail" id="urban-envelopes">
     <div class="project-detail-inner">
       <div class="project-detail-header">
@@ -362,7 +483,9 @@
           <h2 class="project-detail-name">URBAN ENVELOPES, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p>Select any Sydney block on the web interface and real OpenStreetMap road and land data is pulled live into Grasshopper, generating parametric building envelopes, population density analysis, transport routes, and green space distribution on actual Sydney geography. Parameters updated on the website feed back into Grasshopper and update the Three.js viewer in real time. </p>
+          <p>I built a parametric urban design tool that connects a web interface, Grasshopper, and a Three.js viewer. Changes to any parameter on the site regenerate the 3D model in real time against live city data.</p>
+          <p>The tool pulls road and land-use geometry live from OpenStreetMap into Grasshopper, which generates building envelopes, population density analysis, transport routes, and green space distribution for any Sydney block.</p>
+          <p><strong>Workflow:</strong> Parameter changes post from the browser to a local server, trigger a Grasshopper recompute against the current OSM dataset, and push updated meshes to the Three.js viewer.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -378,12 +501,12 @@
         <p class="urban-envelopes-population-text"><strong>Population Density Analysis:</strong> Highway boundary geometry from OpenStreetMap is populated with points in Grasshopper, then a closest point component calculates proximity to the most user-heavy building centres to simulate where population movement concentrates. The seed point controlled on the website simultaneously drives building inclination and population density; so taller or denser building clusters attract higher population, gradually dispersing toward smaller blocks. This analysis directly informed where rooftop greenery and amenity buildings were placed, prioritising less populated zones for green space.</p>
       </div>
       <div class="urban-envelopes-youtube-video">
-        <video src="assets/projects/URBANENVELOPES/youtube.mp4" autoplay loop muted playsinline loading="lazy"></video>
+        <video src="assets/projects/URBANENVELOPES/youtube.mp4" autoplay loop muted playsinline loading="lazy" aria-label="Urban Envelopes: parametric building envelope and urban analysis in real time"></video>
       </div>
     </div>
   </section>
 
-  <!-- 7. Karamba with Grid Shells -->
+  <!-- 8. Karamba with Grid Shells -->
   <section class="project-detail" id="karamba">
     <div class="project-detail-inner">
       <div class="project-detail-header">
@@ -391,7 +514,8 @@
           <h2 class="project-detail-name">KARAMBA WITH GRID SHELLS, 2024</h2>
         </div>
         <div class="project-detail-desc-col">
-          <p><strong>Workflow:</strong> A catenary surface was generated using Kangaroo physics simulation to form the initial shell geometry. The structure was then converted into a geodesic grid suitable for fabrication and analysed using Karamba3D to test load behaviour and optimise member dimensions. Finally, the design was fabricated through laser-cut components and physically assembled.</p>
+          <p>I designed and fabricated a geodesic grid shell using physics simulation for form-finding and structural analysis, validating every member before cutting a single piece.</p>
+          <p>I used Kangaroo to derive the catenary shell form, the shape a hanging chain makes, which transfers load in pure compression. I then ran Karamba3D load tests across four conditions (gravity, snow, wind, and combined loads) to size the cross-sections and confirm utilization before generating the geometry for laser cutting and hand assembly.</p>
           <div class="project-skill-block" aria-label="Design fields and skills">
             <p class="project-skill-label">Design fields/skills</p>
             <ul class="project-skill-list">
@@ -404,7 +528,7 @@
         <div class="karamba-cell karamba-top-left">
           <h3 class="karamba-section-title"><strong>A</strong> FORM FINDING ANALYSIS [KANGAROO PHYSICS]</h3>
           <button type="button" class="karamba-grid-btn" data-explanation="" aria-label="Form finding, view details">
-            <video src="assets/projects/GRIDSHELL/Digital Form Finding.mp4" autoplay loop muted playsinline loading="lazy"></video>
+            <video src="assets/projects/GRIDSHELL/Digital Form Finding.mp4" autoplay loop muted playsinline loading="lazy" aria-label="Karamba: catenary form-finding simulation using Kangaroo physics"></video>
           </button>
         </div>
         <div class="karamba-cell karamba-top-right">
@@ -439,7 +563,7 @@
       <p>For the loads I tested various conditions</p>
       <ul>
         <li><strong>Gravity:</strong> component [The structures own weight]</li>
-        <li><strong>Snow:</strong> 1–1.5 kN/m²</li>
+        <li><strong>Snow:</strong> 1 to 1.5 kN/m²</li>
         <li><strong>Wind:</strong> 0.84 kN/m²</li>
       </ul>
       <p><strong>Combinations of load conditions:</strong></p>
@@ -479,6 +603,12 @@
             <a href="#neverendinglines" class="projects-rail-link" data-section="neverendinglines" aria-label="Never-Ending Lines">
               <span class="projects-rail-label">Never-Ending Lines</span>
               <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/neverendinglines.png" alt="" width="40" height="40" loading="lazy"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#goatisland" class="projects-rail-link" data-section="goatisland" aria-label="Goat Island">
+              <span class="projects-rail-label">Goat Island</span>
+              <span class="projects-rail-thumb-wrap"><img class="projects-rail-thumb" src="assets/covers/goatisland.png" alt="" width="40" height="40" loading="lazy"></span>
             </a>
           </li>
           <li>

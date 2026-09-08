@@ -2,10 +2,16 @@
    SOOHA SHIN — PORTFOLIO
    ============================================ */
 
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
 :root {
   --blue: #0049BC;
-  --blue-dark: #0049BC;
-  --blue-light: #0049BC;
   --white: #ffffff;
   --off-white: #f5f5f7;
   --black: #0a0a0a;
@@ -13,15 +19,69 @@
   --gray-200: #e0e0e5;
   --gray-400: #9999aa;
   --gray-600: #555566;
+  --gray-700: #444455;
   --gray-800: #2a2a3a;
-  --font: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --font: 'Pretendard Variable', Helvetica, "Helvetica Neue", Arial, sans-serif;
   --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ── Semantic text colors ── */
+  --text-primary:   #2a2a3a;   /* body text */
+  --text-secondary: #555566;   /* muted, labels */
+
+  /* ── Type scale ── */
+  --text-xs:      0.75rem;
+  --text-sm:      0.875rem;
+  --text-base:    1rem;
+  --text-lg:      1.125rem;
+  --text-xl:      1.5rem;
+  --text-2xl:     2rem;
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+
+  /* ── Weights ── */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  /* ── Line heights ── */
+  --leading-tight:   1.2;
+  --leading-snug:    1.4;
+  --leading-relaxed: 1.65;
+
+  /* ── Spacing ── */
+  --space-1:  0.5rem;
+  --space-2:  1rem;
+  --space-3:  1.5rem;
+  --space-4:  2rem;
+  --space-5:  3rem;
+  --space-6:  4rem;
+  --space-8:  6rem;
+  --space-12: 8rem;
 }
 
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background: var(--white);
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 2px solid var(--blue);
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
 }
 
 html {
@@ -92,14 +152,24 @@ select {
 .nav-links a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   letter-spacing: 0.03em;
   transition: color 0.3s;
 }
 
 .nav-links a:hover {
   color: var(--white);
+}
+
+.nav-links a:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+#nav.scrolled .nav-links a:focus-visible {
+  outline-color: var(--blue);
 }
 
 #nav.scrolled .nav-links a {
@@ -165,10 +235,10 @@ select {
 
 .hero-subtitle p {
   color: var(--white);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.06em;
-  line-height: 1.5;
+  line-height: var(--leading-snug);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -213,8 +283,8 @@ select {
 
 .hero-hint {
   color: rgba(255, 255, 255, 0.45);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
   letter-spacing: 0.04em;
 }
 
@@ -228,8 +298,8 @@ select {
   border-radius: 100px;
   color: var(--white);
   font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   cursor: pointer;
   transition: all 0.3s var(--transition);
   backdrop-filter: blur(10px);
@@ -269,8 +339,8 @@ select {
 
 .hero-scroll span {
   color: var(--white);
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.15em;
 }
 
@@ -290,14 +360,14 @@ select {
    ============================================ */
 
 #projects {
-  padding: 10rem 4rem;
+  padding: var(--space-12) var(--space-6);
   max-width: 1300px;
   margin: 0 auto;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
   letter-spacing: -0.02em;
   margin-bottom: 3rem;
 }
@@ -312,7 +382,7 @@ select {
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12rem 4rem;
+  gap: var(--space-12) var(--space-6);
   align-items: start;
 }
 
@@ -326,81 +396,130 @@ select {
 }
 
 .project-img-wrap {
-  overflow: visible;
+  position: relative;
+  overflow: hidden;
   border-radius: 3px;
-  height: 55vh;
-  min-height: 360px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Every card is the same box: one ratio for the whole grid */
+  aspect-ratio: 3 / 2;
+  /* Breathing room so covers sit back from the frame edge */
+  padding: 6%;
   transform-style: preserve-3d;
   will-change: transform;
   transition: transform 0.15s ease-out;
 }
 
+/* Whole cover always visible — never cropped */
 .project-img-wrap img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;
+  object-position: center;
 }
 
-/* Homepage project card — video cover (crop letterboxing, match image cards) */
-.project-img-wrap--video {
-  overflow: hidden;
-}
-
+/* Homepage project card — video cover, framed like the image cards */
 .project-img-wrap--video video {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  transform: scale(1.08);
-  transform-origin: center center;
 }
 
-.project-card-text {
-  margin-top: 1rem;
+/* Hover/focus overlay — blurb + skills veil over card media */
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  padding: var(--space-3);
+  background: rgba(10, 10, 10, 0.78);
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
-.project-title {
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  margin: 0 0 0.4rem;
-  color: var(--black);
+.project-card:hover .project-card-overlay,
+.project-card:focus-within .project-card-overlay {
+  opacity: 1;
+}
+
+/* Inner content slides up subtly as the veil fades in */
+.project-card-overlay > * {
+  transform: translateY(12px);
+  transition: transform 0.3s ease-out;
+}
+
+.project-card:hover .project-card-overlay > *,
+.project-card:focus-within .project-card-overlay > * {
+  transform: translateY(0);
 }
 
 .project-blurb {
   margin: 0;
-  max-width: 52ch;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.55;
+  max-width: 42ch;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
   letter-spacing: 0.01em;
-  color: var(--gray-600);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .project-card-skills {
   list-style: none;
-  margin: 0.45rem 0 0;
+  margin: 0;
   padding: 0;
-  max-width: 58ch;
-  line-height: 1.5;
+  max-width: 46ch;
+  line-height: 1.6;
 }
 
 .project-card-skills li {
   display: inline;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--gray-700);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .project-card-skills li:not(:last-child)::after {
   content: ' · ';
-  color: var(--gray-400);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 400;
+}
+
+/* Project name — always visible below the image, all caps */
+.project-title {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* Touch devices (no hover): name stays below; hide the hover-only veil */
+@media (hover: none) {
+  .project-card-overlay {
+    display: none;
+  }
+}
+
+/* Respect reduced-motion: fade only, no slide */
+@media (prefers-reduced-motion: reduce) {
+  .project-card-overlay,
+  .project-card-overlay > * {
+    transition-duration: 0.01ms;
+  }
+
+  .project-card-overlay > * {
+    transform: none;
+  }
 }
 
 
@@ -481,8 +600,8 @@ select {
   justify-content: center;
   padding: 2rem;
   color: var(--white);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
 }
 
 .modal-base {
@@ -492,14 +611,14 @@ select {
 }
 
 .modal-info h2 {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
   letter-spacing: 0.04em;
 }
 
 .modal-info p {
-  color: var(--gray-600);
-  line-height: 1.7;
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
   margin-top: 0.75rem;
 }
 
@@ -514,8 +633,8 @@ select {
   padding: 0.35rem 0.85rem;
   background: var(--gray-100);
   border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
   color: var(--gray-600);
   letter-spacing: 0.03em;
 }
@@ -524,126 +643,169 @@ select {
    ABOUT SECTION
    ============================================ */
 
+/* ============================================
+   ABOUT — left-aligned statement, frosted-glass panel (Apple HIG)
+   Every token below is scoped to #about, so nothing here can reach
+   another section. Light is the default; dark applies when
+   <html data-theme="dark"> is set. Spacing stays on the 8px grid
+   via the existing --space-* scale.
+   ============================================ */
+
 #about {
-  padding: 6rem 2.5rem 8rem;
-  background: var(--off-white);
+  /* ── Glass tokens — LIGHT ── */
+  --about-glass-bg: rgba(255, 255, 255, 0.5);
+  --about-glass-bg-opaque: rgba(255, 255, 255, 0.94);   /* no-backdrop-filter fallback */
+  --about-glass-border: rgba(255, 255, 255, 0.7);
+  --about-glass-shadow:
+    0 12px 40px rgba(58, 78, 122, 0.20),                /* blue-grey depth, not black */
+    inset 0 1px 0 rgba(255, 255, 255, 0.60);            /* inner top glass edge */
+  --about-divider: rgba(32, 44, 78, 0.12);
+  --about-heading-color: var(--black);
+  --about-text: var(--text-primary);
+  --about-text-muted: var(--text-secondary);
+  --about-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Segoe UI", system-ui, sans-serif;
+
+  padding: var(--space-12) var(--space-4);
+  /* Colour behind the panel — saturate(180%) needs something to bloom against;
+     a flat fill would leave the frost invisible. */
+  background:
+    radial-gradient(60rem 34rem at 12% 8%, rgba(0, 73, 188, 0.16), transparent 62%),
+    radial-gradient(46rem 30rem at 88% 92%, rgba(120, 195, 235, 0.30), transparent 64%),
+    var(--off-white);
+}
+
+/* ── Glass tokens — DARK (independent values, not an inversion) ── */
+:root[data-theme="dark"] #about {
+  --about-glass-bg: rgba(28, 28, 34, 0.45);
+  --about-glass-bg-opaque: rgba(28, 28, 34, 0.93);
+  --about-glass-border: rgba(255, 255, 255, 0.14);
+  --about-glass-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --about-divider: rgba(255, 255, 255, 0.12);
+  --about-heading-color: #f5f5f7;
+  --about-text: rgba(255, 255, 255, 0.86);
+  --about-text-muted: rgba(255, 255, 255, 0.56);
+
+  background:
+    radial-gradient(60rem 34rem at 12% 8%, rgba(0, 73, 188, 0.38), transparent 62%),
+    radial-gradient(46rem 30rem at 88% 92%, rgba(60, 130, 190, 0.28), transparent 64%),
+    #0d0d12;
 }
 
 .about-container {
-  max-width: 960px;
+  /* 880px of content + 2 × 48px panel padding — preserves the original text measure */
+  max-width: 976px;
   margin: 0 auto;
+  padding: var(--space-5);
+  font-family: var(--about-font);
+  background: var(--about-glass-bg);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--about-glass-border);
+  border-radius: 26px;
+  box-shadow: var(--about-glass-shadow);
 }
 
-/* Short bio — easy first read */
-.about-lead {
-  max-width: 38rem;
-  margin-bottom: 2.75rem;
+/* Fallback: no backdrop-filter → lean on an opaque fill so text stays readable */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .about-container {
+    background: var(--about-glass-bg-opaque);
+  }
 }
 
-.about-intro {
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--black);
-  margin: 0 0 0.85rem;
+/* Respect a reduced-transparency preference the same way */
+@media (prefers-reduced-transparency: reduce) {
+  .about-container {
+    background: var(--about-glass-bg-opaque);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.about-heading {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
   letter-spacing: -0.01em;
+  color: var(--about-heading-color);
+  margin: 0 0 var(--space-3);
 }
 
-.about-tagline {
-  margin: 0;
-  font-size: 0.98rem;
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--gray-600);
+.about-statement {
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--about-text);
+  max-width: 46rem;
+  margin: 0 0 var(--space-6);
 }
 
-/* Skills region */
-.about-skills-label {
-  margin: 0 0 1rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--gray-600);
+.about-line {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--about-divider);
 }
 
-.about-skills {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.75rem 2.5rem;
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+.about-line-label {
+  flex: 0 0 9rem;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  color: var(--about-text-muted);
 }
 
-.skill-group h4 {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--blue);
-  margin: 0 0 0.65rem;
+.about-line-body {
+  flex: 1;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--about-text);
 }
 
-.skill-tag-list {
+.about-line-list {
+  flex: 1;
   list-style: none;
   margin: 0;
   padding: 0;
-  line-height: 1.65;
+  counter-reset: about-item;
 }
 
-.skill-tag-list li {
-  display: inline;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--gray-700);
+.about-line-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.4rem;
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--about-text);
+  counter-increment: about-item;
 }
 
-.skill-tag-list li:not(:last-child)::after {
-  content: ' · ';
-  color: var(--gray-400);
-  font-weight: 400;
-}
-
-/* Credentials — three calm cards */
-.about-credentials {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  align-items: stretch;
-}
-
-.about-credentials .resume-block {
+.about-line-list li:last-child {
   margin-bottom: 0;
 }
 
-.credential-card {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
-  padding: 1.35rem 1.25rem;
-  margin-bottom: 0;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+.about-line-list li::before {
+  content: counter(about-item);
+  position: absolute;
+  left: 0;
+  color: var(--about-text-muted);
 }
 
-.credential-card .resume-section-title {
-  margin-top: 0;
+.about-line-body a,
+.about-line-list a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-
-.resume-bullets--compact {
-  padding-left: 1rem;
-}
-
-.resume-bullets--compact li {
-  margin-bottom: 0.55rem;
-  line-height: 1.55;
-}
-
-.resume-year {
-  font-weight: 600;
-  color: var(--gray-600);
-  margin-left: 0.25rem;
+.about-line-body a:hover,
+.about-line-body a:focus-visible,
+.about-line-list a:hover,
+.about-line-list a:focus-visible {
+  text-decoration-thickness: 2px;
 }
 
 /* ============================================
@@ -651,7 +813,7 @@ select {
    ============================================ */
 
 #contact {
-  padding: 3rem 2.5rem;
+  padding: var(--space-5) var(--space-4);
   background: #d8ebf7;
   text-align: center;
 }
@@ -661,107 +823,6 @@ select {
   margin: 0 auto;
 }
 
-.resume-block {
-  margin-bottom: 2.25rem;
-}
-
-.resume-block:last-of-type {
-  margin-bottom: 0;
-}
-
-.resume-section-title {
-  margin: 0 0 0.85rem;
-  font-size: 0.95rem;
-  font-weight: 400;
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--black);
-}
-
-.resume-role {
-  margin: 0 0 0.35rem;
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: var(--black);
-}
-
-.resume-role strong {
-  font-weight: 700;
-}
-
-.resume-meta,
-.resume-institution {
-  margin: 0 0 0.65rem;
-  font-size: 0.88rem;
-  color: var(--gray-800);
-  line-height: 1.5;
-}
-
-.resume-bullets {
-  margin: 0;
-  padding-left: 1.15rem;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--gray-800);
-}
-
-.resume-bullets li {
-  margin-bottom: 0.35rem;
-}
-
-.resume-bullets li:last-child {
-  margin-bottom: 0;
-}
-
-/* Awards inside credential card */
-.credential-card--awards .about-awards-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: var(--black);
-}
-
-.credential-card--awards .about-awards-list li {
-  margin-bottom: 1rem;
-  padding: 0;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.credential-card--awards .about-awards-list li:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.about-award-title {
-  display: block;
-  font-weight: 700;
-  color: var(--black);
-}
-
-.about-award-title a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.about-award-title a:hover,
-.about-award-title a:focus-visible {
-  text-decoration-thickness: 2px;
-}
-
-.about-award-sub {
-  display: block;
-  margin-top: 0.2rem;
-  font-weight: 400;
-  font-size: 0.88em;
-  line-height: 1.5;
-  color: var(--gray-600);
-}
 
 .contact-social {
   display: flex;
@@ -808,13 +869,13 @@ select {
 footer {
   background: var(--black);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.5rem 2.5rem;
+  padding: var(--space-3) var(--space-4);
   text-align: center;
 }
 
 footer p {
   color: var(--gray-400);
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
 }
 
 /* ============================================
@@ -848,8 +909,8 @@ footer p {
   backdrop-filter: blur(10px);
   border-radius: 100px;
   color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
   z-index: 1500;
   opacity: 0;
   transform: translateY(10px);
@@ -920,8 +981,8 @@ footer p {
   align-items: center;
   gap: 0.6rem;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -937,16 +998,6 @@ footer p {
 /* ============================================
    RESPONSIVE
    ============================================ */
-
-@media (max-width: 1024px) {
-  .about-credentials {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .credential-card--awards {
-    grid-column: 1 / -1;
-  }
-}
 
 @media (max-width: 900px) {
   .hero-text {
@@ -964,29 +1015,22 @@ footer p {
     gap: 5rem;
   }
 
-  .project-img-wrap {
-    height: 45vh;
-    min-height: 280px;
-  }
-
   #projects {
-    padding: 6rem 2rem;
+    padding: var(--space-8) var(--space-4);
   }
 
-  .about-skills {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .about-container {
+    padding: var(--space-4);
+    border-radius: 20px;
   }
 
-  .about-credentials {
-    grid-template-columns: 1fr;
-    max-width: 28rem;
-    margin-left: auto;
-    margin-right: auto;
+  .about-line {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
-  .credential-card--awards {
-    grid-column: auto;
+  .about-line-label {
+    flex: none;
   }
 
   #nav {
@@ -1009,15 +1053,11 @@ footer p {
   }
 
   #projects {
-    padding: 4rem 1.25rem 6rem;
+    padding: var(--space-6) var(--space-2) var(--space-8);
   }
 
   #contact {
     padding: 4rem 1.25rem 3rem;
-  }
-
-  .about-credentials {
-    max-width: none;
   }
 
   .modal-content {
@@ -1029,7 +1069,7 @@ footer p {
   }
 
   .nav-links a {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
   }
 
   .hero-controls {
@@ -1037,7 +1077,7 @@ footer p {
   }
 
   .hand-tracking-btn {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     padding: 0.5rem 1rem;
   }
 }

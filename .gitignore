@@ -1,2 +1,13 @@
 # Local Netlify folder
 .netlify
+
+# macOS
+.DS_Store
+
+# Personal documents (not part of the published site)
+Transcript.pdf
+Transcript.docx
+*.docx
+
+# Raw project source files — not referenced by the site, too large for git
+assets/projects/REVIT/
