@@ -774,6 +774,170 @@ html:has(#projects-hero) {
 }
 
 /* ============================================
+   GOAT ISLAND — DOCUMENTATION GALLERY + CLASH COORDINATION
+   Hero 3D view, then two labelled blocks: drawing sheets and
+   Autodesk Construction Cloud clash snapshots. Thumbnails open in
+   the shared explanation bubble (see .robotic-bubble).
+   ============================================ */
+
+/* PDF download links — sit under the skill chips in the description column */
+.goatisland-downloads {
+  margin-top: 1.35rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--gray-200, #e8e8e8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.goatisland-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--gray-200, #e8e8e8);
+  border-radius: 6px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s var(--transition), border-color 0.2s var(--transition), transform 0.2s var(--transition);
+}
+
+.goatisland-download:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
+
+.goatisland-download:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+}
+
+.goatisland-download svg {
+  flex-shrink: 0;
+}
+
+/* Hero — the two 3D views, centred */
+.goatisland-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  align-items: center;
+  align-self: center;
+  width: min(100%, 1220px);
+  max-width: 1220px;
+  box-sizing: border-box;
+}
+
+.goatisland-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Labelled block — heading + note + grid */
+.goatisland-block {
+  align-self: center;
+  width: min(100%, 1220px);
+  max-width: 1220px;
+  box-sizing: border-box;
+}
+
+.goatisland-block-title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--black);
+  margin: 0 0 0.6rem;
+}
+
+.goatisland-block-note {
+  max-width: 640px;
+  margin: 0 0 2rem;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Drawing sheets — responsive grid, A1 landscape thumbnails */
+.goatisland-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem 1.75rem;
+}
+
+/* Clash snapshots — three tall portrait views side by side */
+.goatisland-clash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  max-width: 760px;
+}
+
+.goatisland-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.goatisland-lightbox-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s var(--transition), box-shadow 0.2s var(--transition);
+}
+
+.goatisland-lightbox-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.goatisland-lightbox-btn:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 4px;
+}
+
+.goatisland-gallery .goatisland-lightbox-btn img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--gray-200, #e8e8e8);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.goatisland-clash-grid .goatisland-lightbox-btn {
+  aspect-ratio: 347 / 805;
+  display: block;
+}
+
+.goatisland-clash-grid .goatisland-lightbox-btn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+}
+
+.goatisland-figure figcaption {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  line-height: var(--leading-snug);
+}
+
+/* ============================================
    LAPTOP MOCKUP
    ============================================ */
 
@@ -1544,6 +1708,16 @@ html:has(#projects-hero) {
     flex-direction: column;
   }
 
+  .goatisland-hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .goatisland-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem 1.5rem;
+  }
+
   .robotic-left-stack {
     margin-inline-start: 0;
     max-width: 100%;
@@ -1654,6 +1828,24 @@ html:has(#projects-hero) {
 
   .project-collage {
     gap: 2.25rem;
+  }
+
+  .goatisland-gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .goatisland-clash-grid {
+    gap: 0.75rem;
+  }
+
+  .goatisland-block-note {
+    margin-bottom: 1.5rem;
+  }
+
+  .goatisland-download {
+    width: 100%;
+    justify-content: center;
   }
 
   .urbanlens-media-stack {

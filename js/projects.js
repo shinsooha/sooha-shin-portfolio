@@ -230,6 +230,9 @@
   document.querySelectorAll('.robotic-object-btn').forEach((btn) => {
     btn.addEventListener('click', () => openBubbleImage(btn.getAttribute('data-explanation')));
   });
+  document.querySelectorAll('.goatisland-lightbox-btn').forEach((btn) => {
+    btn.addEventListener('click', () => openBubbleImage(btn.getAttribute('data-explanation')));
+  });
   document.querySelectorAll('.karamba-grid-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const key = btn.getAttribute('data-karamba-explanation');
